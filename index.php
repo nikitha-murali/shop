@@ -89,7 +89,7 @@ function hmd_render_cards(array $listings) {
     <div class="section-heading"><div><span class="eyebrow">Passed along with care</span><h2>Latest item stories</h2></div><a href="stories.php">Read all stories →</a></div>
     <?php if ($storiesResult->num_rows === 0): ?><p class="empty-state">Item stories from your campus will appear here.</p>
     <?php else: ?><div class="stories"><?php while ($story = $storiesResult->fetch_assoc()): ?>
-      <article class="story"><a href="listing.php?id=<?= (int) $story['id'] ?>"><img src="admin/upload/<?= rawurlencode($story['image']) ?>" alt="<?= hmd_escape($story['title']) ?>"><h3><?= hmd_escape($story['title']) ?></h3></a><p><?= nl2br(hmd_escape(mb_strimwidth($story['story'], 0, 220, '…'))) ?></p></article>
+      <article class="story story-card"><a href="listing.php?id=<?= (int) $story['id'] ?>"><img src="admin/upload/<?= rawurlencode($story['image']) ?>" alt="<?= hmd_escape($story['title']) ?>"><span class="story-kicker">A note from its previous owner</span><h3><?= hmd_escape($story['title']) ?></h3></a><blockquote><?= nl2br(hmd_escape(mb_strimwidth($story['story'], 0, 220, '…'))) ?></blockquote><a class="story-read-more" href="listing.php?id=<?= (int) $story['id'] ?>">Read this item's story <span aria-hidden="true">&nbsp;→</span></a></article>
     <?php endwhile; ?></div><?php endif; ?>
   </section>
 </main>

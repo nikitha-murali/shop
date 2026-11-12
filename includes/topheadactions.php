@@ -43,7 +43,7 @@
   <div class="container">
     <!-- logo section -->
     <a href="./index.php" class="header-logo" aria-label="HandMeDown home">
-      <img src="./images/brand/handmedown-logo.jpg" alt="HandMeDown" style="width: 150px; height: 90px; object-fit: contain; mix-blend-mode: multiply;">
+      <img src="./images/brand/handmedown-logo.png" alt="HandMeDown">
     </a>
     <!-- search input -->
     <div class="header-search-container">

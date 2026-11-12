@@ -34,7 +34,7 @@ $error = $_GET['error'] ?? '';
       <div><label for="pickup_location">Pickup location</label><input id="pickup_location" name="pickup_location" maxlength="255" required></div>
     </div>
     <label for="description">Description</label><textarea id="description" name="description" required></textarea>
-    <label for="story">Item story (optional)</label><textarea id="story" name="story"></textarea>
+    <label for="story">Why are you passing it on? <span class="field-hint">Share a memory, how you used it, or why another student might love it. (Optional)</span></label><textarea id="story" name="story" placeholder="I took this bag to my first campus club meetings. It’s been great, but I’m moving to a smaller one…"></textarea>
     <label for="image">Photo (JPEG, PNG, or WebP; up to 5 MB)</label>
     <input id="image" name="image" type="file" accept="image/jpeg,image/png,image/webp" required>
     <label><input type="checkbox" name="allow_bids" value="1" style="width:auto"> Allow bids</label>

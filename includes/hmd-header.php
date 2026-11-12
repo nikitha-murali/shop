@@ -1,6 +1,6 @@
 <header class="site-header shell">
   <a class="brand" href="index.php" aria-label="HandMeDown home">
-    <img src="images/brand/handmedown-logo.jpg" alt="HandMeDown">
+    <img src="images/brand/handmedown-logo.png" alt="HandMeDown">
   </a>
   <nav class="site-nav" aria-label="Main navigation">
     <a href="browse.php">Browse</a>

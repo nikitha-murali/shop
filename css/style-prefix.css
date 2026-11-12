@@ -496,9 +496,9 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
   border-bottom: 1px solid var(--pale-purple-pentone);
 }
 
-.header-logo { margin-bottom: 20px; }
+.header-logo { display: flex; align-items: center; justify-self: start; margin-bottom: 20px; }
 
-.header-logo img { margin: auto; }
+.header-logo img { display: block; width: 172px; height: 82px; margin: 0; object-fit: contain; }
 
 .header-search-container { position: relative; }
 

@@ -59,7 +59,7 @@ Use the [HandMeDown campus marketplace setup](#handmedown-campus-marketplace) be
 
 This repository now includes a student resale marketplace alongside its original shop files. The marketplace stores its data in the existing `web` database and keeps its additional tables prefixed with `hmd_`.
 
-The HandMeDown brand palette uses Egyptian blue (`#1034A6`), stone blue (`#718DA5`), and scarlet red (`#C9364B`) as a restrained accent. The team-supplied logo is stored at `images/brand/handmedown-logo.jpg`; the homepage includes responsive campus-shopping and seller banners.
+The HandMeDown brand palette uses Egyptian blue (`#1034A6`), stone blue (`#718DA5`), and scarlet red (`#C9364B`) as a restrained accent. The team-supplied logo has a transparent, palette-matched version at `images/brand/handmedown-logo.png`; the homepage includes responsive campus-shopping and seller banners. Item stories are presented as the previous owner's backstory, not as a second product description.
 
 ### Local setup
 

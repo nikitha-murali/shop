@@ -30,7 +30,7 @@ $error = $_GET['error'] ?? '';
     <p>Condition: <?php hmd_render_condition_rating($listing['condition_score']); ?> · Age: <?= (int) $listing['age_months'] ?> months</p>
     <p>Original price: ₹<?= hmd_escape(number_format((float) $listing['original_price'], 2)) ?></p>
     <p class="box">Asking ₹<?= hmd_escape(number_format((float) $listing['asking_price'], 2)) ?> · Indicative price estimate: <?= $listing['predicted_price'] === null ? 'not available' : '₹' . hmd_escape(number_format((float) $listing['predicted_price'], 2)) ?> · <?= hmd_escape($listing['deal_badge'] ?? '') ?><br><small>Estimate only, not a guaranteed sale price.</small></p>
-    <?php if ($listing['story']): ?><blockquote><?= nl2br(hmd_escape($listing['story'])) ?></blockquote><?php endif; ?>
+    <?php if ($listing['story']): ?><section class="story-note"><span class="story-kicker">A note from the previous owner</span><h2>Why I’m passing it on</h2><blockquote><?= nl2br(hmd_escape($listing['story'])) ?></blockquote></section><?php endif; ?>
     <p>Seller: <?= hmd_escape($listing['seller_name']) ?></p>
     <a class="btn" href="buy.php?id=<?= (int) $listing['id'] ?>">Buy now</a>
     <?php if ((int) $listing['allow_bids'] === 1): ?>

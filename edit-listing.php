@@ -62,7 +62,7 @@ $error = $_GET['error'] ?? '';
       <?php endforeach; ?>
     </div>
     <label>Description</label><textarea name="description" required><?= hmd_escape($listing['description']) ?></textarea>
-    <label>Story</label><textarea name="story"><?= hmd_escape($listing['story']) ?></textarea>
+    <label for="story">Why are you passing it on? <span class="field-hint">Share a memory or how another student could use it. (Optional)</span></label><textarea id="story" name="story"><?= hmd_escape($listing['story']) ?></textarea>
     <label><input type="checkbox" name="allow_bids" value="1" style="width:auto" <?= (int) $listing['allow_bids'] === 1 ? 'checked' : '' ?>> Allow bids</label>
     <button type="submit">Save changes</button>
   </form>
