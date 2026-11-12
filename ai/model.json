@@ -1,0 +1,14 @@
+{
+  "intercept": 0.0,
+  "age_coef": -0.015053755525792356,
+  "condition_coef": 0.11985552898536879,
+  "category_coefs": {
+    "Cycle": -0.869134286574693,
+    "Electronics": -0.785441274243428,
+    "Hostel Essentials": -1.155875360712682,
+    "Notes": -1.5592003999003803,
+    "Textbook": -1.0522439497837364
+  },
+  "r2": 0.9849,
+  "note": "Trained on SYNTHETIC data. Prediction = original * exp(category + age_coef*age + condition_coef*condition + intercept)."
+}
