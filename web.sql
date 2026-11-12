@@ -166,7 +166,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customer_id`, `customer_fname`, `customer_email`, `customer_pwd`, `customer_phone`, `customer_address`, `customer_role`) VALUES
-(1, 'adminstrator', 'admin@gmail.com', 'admin', '03469589557', 'ایران,تهران', 'admin'),
+(1, 'adminstrator', 'admin@gmail.com', '$2y$12$TARCVejap7PkO/Cs2hj3iuCvYJZria4CxHZbGZ3PmvgXgh7xvT/46', '03469589557', 'Presidency University campus, Bengaluru', 'admin'),
 (28, 'حسین کاظمی نیا', 'hossein.kazemi965@gmail.com', '29a5091f60', '09191234567', 'مشهد، خیابان امام رضا', 'normal'),
 (29, 'مهدی احمدی', 'mahdi.ahmadi318@yahoo.com', '95088cd4c6', '09361234567', 'تبریز، خیابان آزادی', 'normal'),
 (30, 'سجاد رحیمی', 'sajjad.rahimi371@iran.ir', '9c6c361668', '09181234567', 'کرج، مهرشهر', 'normal'),

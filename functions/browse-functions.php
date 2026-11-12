@@ -1,6 +1,16 @@
 <?php
 require_once __DIR__ . '/sell-functions.php';
 
+function hmd_is_academic_category($category) {
+    $category = strtolower(trim((string) $category));
+    foreach (['book', 'textbook', 'note', 'study material', 'course material', 'academic'] as $keyword) {
+        if (strpos($category, $keyword) !== false) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function hmd_condition_label($score) {
     $score = (float) $score;
     if ($score < 1.5) {
@@ -42,15 +52,26 @@ function hmd_fetch_listings(mysqli $conn, array $filters = []) {
     ];
     $orderBy = $sortOptions[$filters['sort'] ?? 'newest'] ?? $sortOptions['newest'];
 
-    foreach (['q' => 'l.title', 'category' => 'l.category', 'course' => 'l.course', 'semester' => 'l.semester'] as $key => $column) {
-        $value = trim($filters[$key] ?? '');
-        if ($value !== '') {
-            $where[] = $key === 'q' ? "({$column} LIKE ? OR l.description LIKE ?)" : "{$column} = ?";
-            if ($key === 'q') {
-                $values[] = '%' . $value . '%';
-                $values[] = '%' . $value . '%';
-                $types .= 'ss';
-            } else {
+    $query = trim($filters['q'] ?? '');
+    if ($query !== '') {
+        $where[] = '(l.title LIKE ? OR l.description LIKE ? OR l.category LIKE ?)';
+        $pattern = '%' . $query . '%';
+        array_push($values, $pattern, $pattern, $pattern);
+        $types .= 'sss';
+    }
+
+    $category = trim($filters['category'] ?? '');
+    if ($category !== '') {
+        $where[] = 'l.category = ?';
+        $values[] = $category;
+        $types .= 's';
+    }
+
+    if (hmd_is_academic_category($category)) {
+        foreach (['course' => 'l.course', 'semester' => 'l.semester'] as $key => $column) {
+            $value = trim($filters[$key] ?? '');
+            if ($value !== '') {
+                $where[] = "{$column} = ?";
                 $values[] = $value;
                 $types .= 's';
             }
@@ -113,6 +134,10 @@ function hmd_get_listing_categories(mysqli $conn) {
     $categories = [];
     while ($row = $result->fetch_assoc()) {
         $categories[] = $row['category'];
+    }
+    if (!in_array('Books', $categories, true)) {
+        $categories[] = 'Books';
+        sort($categories, SORT_NATURAL | SORT_FLAG_CASE);
     }
     return $categories;
 }
@@ -201,7 +226,6 @@ function hmd_buy_listing(mysqli $conn, $listingId, $buyerId, $paymentMethod) {
     if (!in_array($paymentMethod, ['cash_on_pickup', 'upi_demo'], true)) {
         throw new RuntimeException('Choose cash on pickup or UPI demo.');
     }
-
     $conn->begin_transaction();
     try {
         $stmt = $conn->prepare(
@@ -241,6 +265,72 @@ function hmd_buy_listing(mysqli $conn, $listingId, $buyerId, $paymentMethod) {
         $order->bind_param('iids', $listingId, $buyerId, $price, $paymentMethod);
         $order->execute();
         $order->close();
+        $conn->commit();
+    } catch (Throwable $error) {
+        $conn->rollback();
+        throw $error;
+    }
+}
+
+function hmd_buy_cart(mysqli $conn, array $listingIds, $buyerId, $paymentMethod) {
+    if (!in_array($paymentMethod, ['cash_on_pickup', 'upi_demo'], true)) {
+        throw new RuntimeException('Choose cash on pickup or UPI demo.');
+    }
+
+    $listingIds = array_values(array_unique(array_filter(
+        array_map('intval', $listingIds),
+        static function ($id) { return $id > 0; }
+    )));
+    sort($listingIds, SORT_NUMERIC);
+    if (!$listingIds) {
+        throw new RuntimeException('Your cart is empty.');
+    }
+
+    $conn->begin_transaction();
+    try {
+        $select = $conn->prepare(
+            'SELECT id, seller_id, asking_price, status
+             FROM hmd_listings WHERE id = ? FOR UPDATE'
+        );
+        $markSold = $conn->prepare(
+            "UPDATE hmd_listings SET status = 'sold' WHERE id = ? AND status = 'active'"
+        );
+        $rejectBids = $conn->prepare(
+            "UPDATE hmd_bids SET status = 'rejected' WHERE listing_id = ? AND status = 'pending'"
+        );
+        $insertOrder = $conn->prepare(
+            "INSERT INTO hmd_orders
+                (listing_id, buyer_id, price, source, payment_method, payment_status)
+             VALUES (?, ?, ?, 'buy', ?, 'pending')"
+        );
+
+        foreach ($listingIds as $listingId) {
+            $select->bind_param('i', $listingId);
+            $select->execute();
+            $listing = $select->get_result()->fetch_assoc();
+            if (!$listing || $listing['status'] !== 'active'
+                || (int) $listing['seller_id'] === (int) $buyerId) {
+                throw new RuntimeException('An item in your cart is no longer available. Review your cart and try again.');
+            }
+
+            $markSold->bind_param('i', $listingId);
+            $markSold->execute();
+            if ($markSold->affected_rows !== 1) {
+                throw new RuntimeException('An item in your cart was just purchased. Review your cart and try again.');
+            }
+
+            $rejectBids->bind_param('i', $listingId);
+            $rejectBids->execute();
+
+            $price = (float) $listing['asking_price'];
+            $insertOrder->bind_param('iids', $listingId, $buyerId, $price, $paymentMethod);
+            $insertOrder->execute();
+        }
+
+        $select->close();
+        $markSold->close();
+        $rejectBids->close();
+        $insertOrder->close();
         $conn->commit();
     } catch (Throwable $error) {
         $conn->rollback();

@@ -21,7 +21,7 @@ The project includes a student marketplace and an administrator area for managin
 - **Browse and recommendations:** Search/filter listings and see course-based or similar-item suggestions.
 - **Bidding and demo orders:** Place bids, accept a bid, or record an order without processing real payments.
 - **Illustrative price model:** A scikit-learn linear-regression model demonstrates price badges using synthetic sample data; it is not trained on real sales.
-- **Approximate photo search:** Compare image color histograms to find visual look-alikes.
+- **Approximate photo search:** Show only active Dresses listings, ranking comparable listing photos by color similarity. Illustrated local sample covers are returned but cannot be visually ranked.
 
 #### ⚙️ Admin Panel Features:
 - **Listing and order management:** Review campus listings and orders in the admin area.
@@ -65,22 +65,35 @@ The HandMeDown brand palette uses Egyptian blue (`#1034A6`), stone blue (`#718DA
 
 1. Start Apache and MySQL in XAMPP, create/select the `web` database, and import `web.sql` only if the existing shop tables are not already present.
 2. Back up the database, then run `hmd-schema.sql` against `web` to add student fields and marketplace tables.
-3. Optional, local-only preview data: run `hmd-sample-data.sql` after the schema. It adds 20 clearly fictional listings with varied product photos from the existing shop catalog, plus five pending sample orders using `@handmedown.invalid` accounts. Never import this sample data into production; the photos are catalog examples, not photos of real student-owned second-hand items.
+3. Optional, local-only preview data: run `hmd-sample-data.sql` after the schema. It adds 28 clearly fictional listings, including DSA, OOPS, model question papers, Web Design course materials, and four sample dresses, plus five pending sample orders using `@handmedown.invalid` accounts. The book and dress covers are original illustrative artwork, not photographs of actual items. Never import this sample data into production.
 4. Check `includes/config.php` for the local MySQL credentials.
 5. Signup allows `presidencyuniversity.in` by default. Override the allowed domain list with the `HMD_COLLEGE_EMAIL_DOMAINS` environment variable; multiple domains can be comma-separated. Signup checks the email domain but does not verify mailbox ownership.
 6. To generate the illustrative sample price model, install `pandas`, `numpy`, and `scikit-learn`, then run `python ml/train_price_model_synthetic.py`. It creates `ml/model.json` and `ml/sample_dataset.csv` from deterministic synthetic data. Price badges are demonstrations only; the estimates are not based on verified transactions.
 7. `python ml/train_price_model.py` is a separate real-sales trainer. It requires at least 30 verified paid cash-on-pickup orders and does not use or create synthetic training data.
-8. To enable recommendations and photo search, install `ml/requirements.txt`, set `HMD_DB_HOST`, `HMD_DB_PORT`, `HMD_DB_USER`, `HMD_DB_PASSWORD`, and `HMD_DB_NAME` for Python, and run:
+8. For recommendations, install `ml/requirements.txt`, set `HMD_DB_HOST`, `HMD_DB_PORT`, `HMD_DB_USER`, `HMD_DB_PASSWORD`, and `HMD_DB_NAME` for Python, and run:
    - `python ml/similar_items.py`
    - `python ml/build_image_vectors.py`
-   - `python ml/image_search_service.py`
+   Photo search runs the one-shot `ml/search_images.py` matcher through PHP and does not require a separate Flask service or prebuilt image vectors. Set Apache's `HMD_PYTHON_PATH` to the full Python executable path if `python` is not available in Apache's PATH. The PHP process also needs permission to start Python, and Python needs Pillow and mysql-connector-python.
 9. Open the project at `http://localhost/shop/`.
 
-Photo matching compares color histograms to find visual look-alikes; it does not identify exact products.
+Photo matching compares color histograms to find visual look-alikes; it does not identify exact products. Photo search is limited to the `Dresses` category. The four local dress fixtures use clearly labeled illustrations and should be replaced with actual seller photos before deployment.
 
-### Demo checkout
+### Cart and payments
 
-Checkout offers **Cash on pickup** and **UPI (demo)**. Both save an order and mark the listing sold; the UPI demo does not open a payment app, collect payment details, transfer money, or mark payment as paid. Do not present it as a live payment gateway. Review `CREDITS.md` for the project file map and data/AI notes.
+The HandMeDown cart supports multiple listings and creates one order per item. Cash on pickup and UPI (demo) are local order-recording flows only; the demo UPI option does not transfer money.
+
+Razorpay **test mode** is available when test API keys are configured in Apache. Create test keys in the Razorpay dashboard, then add these directives to a project-scoped `<Directory>` block in the local Apache configuration (for example, `C:\xampp\apache\conf\extra\httpd-vhosts.conf`):
+
+```apache
+<Directory "C:/xampp/htdocs/shop">
+SetEnv HMD_RAZORPAY_KEY_ID "rzp_test_your_key_id"
+SetEnv HMD_RAZORPAY_KEY_SECRET "your_test_key_secret"
+</Directory>
+```
+
+Restart Apache after changing the configuration. Never commit or share the secret key. Run `hmd-schema.sql` to create the payment-attempt tables. Checkout creates a server-priced Razorpay order, temporarily reserves the items, verifies the returned signature and captured payment with Razorpay, and only then records paid orders. Closing or failing checkout releases the reservation when Razorpay confirms there is no captured payment; abandoned reservations expire after 15 minutes. Webhook handling and production operations are not implemented, so this local test flow is not production-ready. Before accepting real payments, implement and validate signed webhooks, use HTTPS, and complete a security review.
+
+Review `CREDITS.md` for the project file map and data/AI notes.
 
 ---
 

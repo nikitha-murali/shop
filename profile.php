@@ -35,10 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = trim($_POST['phone'] ?? '');
     $address = trim($_POST['address'] ?? '');
     $emailDomain = substr(strrchr($email, '@') ?: '', 1);
+    $emailUnchanged = strcasecmp($email, (string) $profile['customer_email']) === 0;
 
     if ($name === '' || strlen($name) > 50
         || !filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 100
-        || !in_array($emailDomain, HMD_COLLEGE_EMAIL_DOMAINS, true)
+        || (!$emailUnchanged && !in_array($emailDomain, HMD_COLLEGE_EMAIL_DOMAINS, true))
         || strlen($phone) > 15 || $address === '') {
         hmd_redirect('profile.php', 'Enter a valid name, campus email, phone number, and address.');
     }

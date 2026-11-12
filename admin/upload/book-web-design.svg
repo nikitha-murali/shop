@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="800" viewBox="0 0 640 800" role="img" aria-labelledby="title desc">
+  <title id="title">Web Design HTML CSS and JavaScript course book</title>
+  <desc id="desc">Original illustrated blue web-design textbook cover.</desc>
+  <defs><linearGradient id="cover" x2="1" y2="1"><stop stop-color="#1034a6"/><stop offset="1" stop-color="#526fc4"/></linearGradient></defs>
+  <rect width="640" height="800" rx="26" fill="#dce5f4"/>
+  <rect x="34" y="30" width="572" height="740" rx="20" fill="#f8faff"/>
+  <path d="M34 50a20 20 0 0 1 20-20h65v740H54a20 20 0 0 1-20-20z" fill="url(#cover)"/>
+  <rect x="365" y="145" width="175" height="130" rx="12" fill="#fff" stroke="#718da5" stroke-width="4"/>
+  <path d="M365 181h175" stroke="#718da5" stroke-width="4"/>
+  <circle cx="387" cy="163" r="5" fill="#c9364b"/><circle cx="407" cy="163" r="5" fill="#e6a14a"/><circle cx="427" cy="163" r="5" fill="#718da5"/>
+  <path d="m407 221 18 17-18 17M455 255l18-34" fill="none" stroke="#1034a6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="146" y="115" fill="#718da5" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="4">BUILD FOR THE WEB</text>
+  <text x="146" y="400" fill="#1034a6" font-family="Arial,sans-serif" font-size="62" font-weight="800">WEB</text>
+  <text x="146" y="470" fill="#1034a6" font-family="Arial,sans-serif" font-size="62" font-weight="800">DESIGN</text>
+  <text x="146" y="535" fill="#c9364b" font-family="Arial,sans-serif" font-size="38" font-weight="800">HTML · CSS · JS</text>
+  <text x="146" y="590" fill="#42516a" font-family="Arial,sans-serif" font-size="22">Layouts · Responsive design · Basics</text>
+  <rect x="146" y="687" width="205" height="44" rx="22" fill="#1034a6"/>
+  <text x="248" y="716" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2">CSE · SEM 2</text>
+</svg>

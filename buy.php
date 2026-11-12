@@ -17,11 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         hmd_redirect('buy.php?id=' . $listingId, 'Your form session expired. Please try again.');
     }
     try {
-        $paymentMethod = $_POST['payment_method'] ?? '';
+        $paymentMethod = 'cash_on_pickup';
         hmd_buy_listing($conn, $listingId, hmd_current_user_id(), $paymentMethod);
-        $message = $paymentMethod === 'upi_demo'
-            ? 'Demo order placed. No UPI transfer was made; arrange payment and pickup with the seller.'
-            : 'Order placed. Arrange cash payment and pickup with the seller.';
+        $message = 'Order placed. Arrange cash payment and pickup with the seller.';
         hmd_redirect('my-orders.php', $message, 'success');
     } catch (mysqli_sql_exception $error) {
         error_log('HandMeDown purchase database error: ' . $error->getMessage());
@@ -36,7 +34,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php if ($error): ?><p class="error"><?= hmd_escape($error) ?></p><?php endif; ?>
 <section class="box"><h2><?= hmd_escape($listing['title']) ?></h2><p class="price">Total: ₹<?= hmd_escape(number_format((float) $listing['asking_price'], 2)) ?></p>
 <form class="hmd-form" method="post"><input type="hidden" name="csrf_token" value="<?= hmd_escape(hmd_csrf_token()) ?>"><input type="hidden" name="listing_id" value="<?= (int) $listingId ?>">
-<label><input type="radio" name="payment_method" value="cash_on_pickup" required> Cash on pickup</label>
-<label><input type="radio" name="payment_method" value="upi_demo" required> UPI (demo)</label>
-<p class="meta">UPI demo only records a sample order. It does not open a payment app or transfer money.</p><button type="submit">Place order</button></form>
+<p>Payment is arranged directly with the seller when you meet for pickup.</p><button type="submit">Place order</button></form>
 </section></main></body></html>

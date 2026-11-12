@@ -4,6 +4,8 @@
   </a>
   <nav class="site-nav" aria-label="Main navigation">
     <a href="browse.php">Browse</a>
+    <?php $cartCount = !empty($_SESSION['hmd_cart']) && is_array($_SESSION['hmd_cart']) ? count($_SESSION['hmd_cart']) : 0; ?>
+    <a href="hmd-cart.php">Cart<?= $cartCount ? ' (' . (int) $cartCount . ')' : '' ?></a>
     <a href="sell.php">Sell</a>
     <a href="stories.php">Stories</a>
     <a href="image-search.php">Photo search</a>

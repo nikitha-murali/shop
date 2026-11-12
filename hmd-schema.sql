@@ -81,3 +81,28 @@ CREATE TABLE IF NOT EXISTS hmd_image_vectors (
     `vector` MEDIUMTEXT NOT NULL,
     PRIMARY KEY (listing_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS hmd_payment_attempts (
+    id INT NOT NULL AUTO_INCREMENT,
+    listing_id INT NOT NULL,
+    buyer_id INT NOT NULL,
+    amount_paise INT UNSIGNED NOT NULL,
+    gateway_order_id VARCHAR(64) NULL,
+    gateway_payment_id VARCHAR(64) NULL,
+    status ENUM('creating', 'created', 'paid', 'expired', 'failed', 'refunded') NOT NULL DEFAULT 'creating',
+    expires_at DATETIME NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY uq_hmd_payment_gateway_order (gateway_order_id),
+    UNIQUE KEY uq_hmd_payment_gateway_payment (gateway_payment_id),
+    KEY idx_hmd_payment_listing_status (listing_id, status, expires_at),
+    KEY idx_hmd_payment_buyer (buyer_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS hmd_payment_attempt_items (
+    attempt_id INT NOT NULL,
+    listing_id INT NOT NULL,
+    amount_paise INT UNSIGNED NOT NULL,
+    PRIMARY KEY (attempt_id, listing_id),
+    KEY idx_hmd_payment_items_listing (listing_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

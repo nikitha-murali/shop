@@ -12,10 +12,10 @@ session_start();
 <body>
   <?php include __DIR__ . '/includes/hmd-header.php'; ?>
   <main class="hmd-content panel">
-    <span class="eyebrow">Secure checkout</span><h1>Payment information</h1>
-    <p>Checkout offers cash on pickup or a simulated UPI option for testing the order flow.</p>
-    <p>The UPI demo does not open a payment app, collect payment details, or transfer money. Orders remain marked as pending until payment is arranged with the seller.</p>
-    <p><a href="browse.php">Browse campus listings</a> · <a href="index.php">HandMeDown home</a></p>
+    <span class="eyebrow">Checkout options</span><h1>Payment information</h1>
+    <p>Cash on pickup and UPI demo only record an order; neither transfers money. Razorpay test mode is available from the cart after the server is configured with Razorpay test keys.</p>
+    <p>Razorpay test mode uses the gateway's test environment and does not charge real money. A payment must be confirmed by Razorpay before the order is marked paid.</p>
+    <p><a href="browse.php">Browse campus listings</a> · <a href="hmd-cart.php">Open your cart</a> · <a href="index.php">HandMeDown home</a></p>
   </main>
 </body>
 </html>

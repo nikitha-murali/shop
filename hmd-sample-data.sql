@@ -12,6 +12,8 @@ VALUES
     ('Sample Sports Seller', 'sample-electronics@handmedown.invalid', '$2y$12$IAx2kbvzZxjM0Yl99ptyRun4Iu1e.CcK2cO8QjitggWCrpDj8.Ele', '0000000000', 'Synthetic sample account - not a real pickup address', 'normal', 'Sample hostel', 'Any course', '1'),
     ('Sample Outerwear Seller', 'sample-hostel@handmedown.invalid', '$2y$12$IAx2kbvzZxjM0Yl99ptyRun4Iu1e.CcK2cO8QjitggWCrpDj8.Ele', '0000000000', 'Synthetic sample account - not a real pickup address', 'normal', 'Sample hostel', 'Any course', '1'),
     ('Sample Watches Seller', 'sample-cycle@handmedown.invalid', '$2y$12$IAx2kbvzZxjM0Yl99ptyRun4Iu1e.CcK2cO8QjitggWCrpDj8.Ele', '0000000000', 'Synthetic sample account - not a real pickup address', 'normal', 'Sample hostel', 'Any course', '1'),
+    ('Campus Books Seller', 'sample-books@handmedown.invalid', '$2y$12$IAx2kbvzZxjM0Yl99ptyRun4Iu1e.CcK2cO8QjitggWCrpDj8.Ele', '0000000000', 'Campus meetup point arranged after order', 'normal', 'Campus hostel', 'Computer Science Engineering', '3'),
+    ('Sample Dresses Seller', 'sample-dresses@handmedown.invalid', '$2y$12$IAx2kbvzZxjM0Yl99ptyRun4Iu1e.CcK2cO8QjitggWCrpDj8.Ele', '0000000000', 'Synthetic sample account - not a real pickup address', 'normal', 'Sample hostel', 'Any course', '1'),
     ('Sample Buyer', 'sample-buyer@handmedown.invalid', '$2y$12$IAx2kbvzZxjM0Yl99ptyRun4Iu1e.CcK2cO8QjitggWCrpDj8.Ele', '0000000000', 'Synthetic sample account - not a real pickup address', 'normal', 'Sample hostel', 'Computer Science', '3');
 
 UPDATE customer SET customer_fname = 'Sample Bags Seller', course = 'Any course', semester = '1' WHERE customer_email = 'sample-textbooks@handmedown.invalid';
@@ -19,19 +21,23 @@ UPDATE customer SET customer_fname = 'Sample Shoes Seller', course = 'Any course
 UPDATE customer SET customer_fname = 'Sample Sports Seller', course = 'Any course', semester = '1' WHERE customer_email = 'sample-electronics@handmedown.invalid';
 UPDATE customer SET customer_fname = 'Sample Outerwear Seller', course = 'Any course', semester = '1' WHERE customer_email = 'sample-hostel@handmedown.invalid';
 UPDATE customer SET customer_fname = 'Sample Watches Seller', course = 'Any course', semester = '1' WHERE customer_email = 'sample-cycle@handmedown.invalid';
+UPDATE customer SET customer_fname = 'Campus Books Seller', course = 'Computer Science Engineering', semester = '3' WHERE customer_email = 'sample-books@handmedown.invalid';
+UPDATE customer SET customer_fname = 'Sample Dresses Seller', course = 'Any course', semester = '1' WHERE customer_email = 'sample-dresses@handmedown.invalid';
 
 SET @seller_textbooks = (SELECT customer_id FROM customer WHERE customer_email = 'sample-textbooks@handmedown.invalid');
 SET @seller_notes = (SELECT customer_id FROM customer WHERE customer_email = 'sample-notes@handmedown.invalid');
 SET @seller_electronics = (SELECT customer_id FROM customer WHERE customer_email = 'sample-electronics@handmedown.invalid');
 SET @seller_hostel = (SELECT customer_id FROM customer WHERE customer_email = 'sample-hostel@handmedown.invalid');
 SET @seller_cycle = (SELECT customer_id FROM customer WHERE customer_email = 'sample-cycle@handmedown.invalid');
+SET @seller_books = (SELECT customer_id FROM customer WHERE customer_email = 'sample-books@handmedown.invalid');
+SET @seller_dresses = (SELECT customer_id FROM customer WHERE customer_email = 'sample-dresses@handmedown.invalid');
 SET @sample_buyer = (SELECT customer_id FROM customer WHERE customer_email = 'sample-buyer@handmedown.invalid');
 
 DROP TEMPORARY TABLE IF EXISTS hmd_sample_seed_ids;
 CREATE TEMPORARY TABLE hmd_sample_seed_ids (id INT PRIMARY KEY);
 INSERT INTO hmd_sample_seed_ids (id)
 SELECT id FROM hmd_listings
-WHERE seller_id IN (@seller_textbooks, @seller_notes, @seller_electronics, @seller_hostel, @seller_cycle);
+WHERE seller_id IN (@seller_textbooks, @seller_notes, @seller_electronics, @seller_hostel, @seller_cycle, @seller_books, @seller_dresses);
 
 DELETE r FROM hmd_recommendations r
 JOIN hmd_sample_seed_ids s ON s.id = r.listing_id OR s.id = r.similar_id;
@@ -68,7 +74,17 @@ VALUES
     (@seller_cycle, 'Blue-strap smartwatch', 'Watches', 'Any course', '1', 'Digital smartwatch with a bright blue strap. Please check the photos for the exact model and features.', 'This watch helped me keep track of busy class days and walks across campus. I upgraded recently, so I hope it becomes a useful everyday companion for someone else.', 'Sports complex', 3.5, 16, 6500, 1700, 3600, 2500, 2840, 'Fair', 'watch-1.jpg', 1, 'active', DATE_SUB(NOW(), INTERVAL 3 DAY)),
     (@seller_cycle, 'Minimal black watch', 'Watches', 'Any course', '1', 'Minimal black wristwatch with a clean, easy-to-read face.', 'I wore this simple watch every day because it went with everything. I have started wearing another one, and this one still deserves wrist time.', 'Sports complex', 4.5, 9, 4200, 1100, 2400, 1700, 1940, 'Fair', 'watch-2.jpg', 0, 'active', DATE_SUB(NOW(), INTERVAL 6 DAY)),
     (@seller_cycle, 'Gold-tone classic watch', 'Watches', 'Any course', '1', 'Gold-tone analog wristwatch with a classic round face.', 'This was a gift I wore for special campus occasions. I have kept it carefully in its case, and I hope it makes another celebration feel special.', 'Main campus gate', 4.1, 8, 5000, 1300, 2800, 1950, 2220, 'Fair', 'watch-3.jpg', 1, 'active', DATE_SUB(NOW(), INTERVAL 1 DAY)),
-    (@seller_cycle, 'Vintage pocket watch', 'Watches', 'Any course', '1', 'Decorative vintage-style pocket watch with a hinged cover.', 'I found this in a family keepsake box and kept it as a little reminder of home. I no longer display it, so I hope it finds a new place to be appreciated.', 'Sports complex', 4.3, 13, 3600, 900, 2000, 1400, 1590, 'Fair', 'watch-4.jpg', 0, 'sold', DATE_SUB(NOW(), INTERVAL 6 DAY));
+    (@seller_cycle, 'Vintage pocket watch', 'Watches', 'Any course', '1', 'Decorative vintage-style pocket watch with a hinged cover.', 'I found this in a family keepsake box and kept it as a little reminder of home. I no longer display it, so I hope it finds a new place to be appreciated.', 'Sports complex', 4.3, 13, 3600, 900, 2000, 1400, 1590, 'Fair', 'watch-4.jpg', 0, 'sold', DATE_SUB(NOW(), INTERVAL 6 DAY)),
+
+    (@seller_books, 'Data Structures & Algorithms (DSA)', 'Books', 'Computer Science Engineering', '3', 'Clear handwritten DSA notes with worked examples for arrays, linked lists, stacks, queues, trees, and sorting. Complete and neatly kept.', 'These notes supported my third-semester DSA exam revision. The worked examples were useful, and I hope they help another student prepare.', 'Central library entrance', 4.6, 8, 900, 250, 600, 400, 480, 'Great deal', 'book-dsa.svg', 1, 'active', DATE_SUB(NOW(), INTERVAL 2 DAY)),
+    (@seller_books, 'Object-Oriented Programming (OOPS)', 'Books', 'Computer Science Engineering', '3', 'Used OOPS course textbook covering classes, inheritance, polymorphism, exception handling, and Java examples. Pages are complete with light highlighting.', 'I used this textbook throughout the OOPS course. The examples were useful before lab exams, and I hope another student gets value from it.', 'Academic block reception', 4.2, 12, 1200, 350, 800, 550, 650, 'Great deal', 'book-oops.svg', 1, 'active', DATE_SUB(NOW(), INTERVAL 3 DAY)),
+    (@seller_books, 'Model Question Papers - Computer Science', 'Books', 'Computer Science Engineering', '3', 'Bundle of previous model question papers for DSA and OOPS, organized by subject and semester. Includes a few pages of revision pointers.', 'I gathered these while studying for end-semester exams and organized them by subject. They helped me understand question patterns, and I hope they support someone else during revision.', 'Central library entrance', 4.8, 5, 500, 150, 350, 250, 300, 'Great deal', 'book-papers.svg', 0, 'active', DATE_SUB(NOW(), INTERVAL 1 DAY)),
+    (@seller_books, 'Web Design - HTML, CSS & JavaScript', 'Books', 'Computer Science Engineering', '2', 'Beginner-friendly web design course book with HTML, CSS, responsive layout, and JavaScript fundamentals. Clean pages with a few study notes.', 'I used this book while building my first course website. The examples made HTML and CSS easier to understand, and I hope they help someone else get started.', 'Student centre', 4.4, 10, 1000, 300, 700, 500, 590, 'Great deal', 'book-web-design.svg', 1, 'active', DATE_SUB(NOW(), INTERVAL 4 DAY)),
+
+    (@seller_dresses, 'Rust Floral Midi Dress (Sample)', 'Dresses', 'Any course', '1', 'Fictional local demo listing. The cover is an illustration, not a photograph of an actual item.', 'A sample dress listing added to demonstrate photo search. Replace this fictional listing with a real campus seller listing before deployment.', 'Student centre', 4.5, 6, 2400, 700, 1400, 950, 1120, 'Fair', 'dress-rust.svg', 0, 'active', DATE_SUB(NOW(), INTERVAL 2 DAY)),
+    (@seller_dresses, 'Sky Blue Wrap Dress (Sample)', 'Dresses', 'Any course', '1', 'Fictional local demo listing. The cover is an illustration, not a photograph of an actual item.', 'A sample dress listing added to demonstrate photo search. Replace this fictional listing with a real campus seller listing before deployment.', 'Library entrance', 4.2, 10, 2800, 800, 1600, 1100, 1290, 'Fair', 'dress-sky.svg', 0, 'active', DATE_SUB(NOW(), INTERVAL 3 DAY)),
+    (@seller_dresses, 'Scarlet Occasion Dress (Sample)', 'Dresses', 'Any course', '1', 'Fictional local demo listing. The cover is an illustration, not a photograph of an actual item.', 'A sample dress listing added to demonstrate photo search. Replace this fictional listing with a real campus seller listing before deployment.', 'Academic block', 4.7, 4, 3200, 900, 1800, 1250, 1460, 'Great deal', 'dress-scarlet.svg', 0, 'active', DATE_SUB(NOW(), INTERVAL 1 DAY)),
+    (@seller_dresses, 'Black Everyday Dress (Sample)', 'Dresses', 'Any course', '1', 'Fictional local demo listing. The cover is an illustration, not a photograph of an actual item.', 'A sample dress listing added to demonstrate photo search. Replace this fictional listing with a real campus seller listing before deployment.', 'Hostel reception', 4.0, 12, 2100, 600, 1250, 850, 1020, 'Fair', 'dress-black.svg', 0, 'active', DATE_SUB(NOW(), INTERVAL 4 DAY));
 
 INSERT INTO hmd_orders
     (listing_id, buyer_id, price, source, payment_method, payment_status, created_at)

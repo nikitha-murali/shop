@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800">
+  <rect width="640" height="800" fill="#f4e7e8"/>
+  <path d="M320 95c-18 0-30 14-30 32 0 12 7 22 17 27l-22 34-80 32 31 95-28 300c-2 23 14 42 37 42h150c23 0 39-19 37-42l-28-300 31-95-80-32-22-34c10-5 17-15 17-27 0-18-12-32-30-32z" fill="#b63f50"/>
+  <path d="M285 188l35 45 35-45 44 18-21 73-58 17-58-17-21-73z" fill="#d56773"/>
+  <path d="M263 321l57 20 57-20M254 410l66 21 66-21M244 506l76 22 76-22" fill="none" stroke="#f2a4a8" stroke-width="8"/>
+  <g fill="#f6c6b7"><circle cx="282" cy="369" r="7"/><circle cx="359" cy="464" r="7"/><circle cx="285" cy="550" r="7"/></g>
+  <text x="320" y="730" text-anchor="middle" fill="#633e44" font-family="Arial,sans-serif" font-size="24">SAMPLE ILLUSTRATION</text>
+</svg>

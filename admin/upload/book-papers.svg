@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="800" viewBox="0 0 640 800" role="img" aria-labelledby="title desc">
+  <title id="title">Computer Science model question papers</title>
+  <desc id="desc">Original illustrated scarlet and cream exam-paper bundle cover.</desc>
+  <rect width="640" height="800" rx="26" fill="#f0dfe2"/>
+  <rect x="34" y="30" width="572" height="740" rx="20" fill="#fffaf7"/>
+  <path d="M34 50a20 20 0 0 1 20-20h65v740H54a20 20 0 0 1-20-20z" fill="#c9364b"/>
+  <rect x="365" y="115" width="150" height="190" rx="8" fill="#e8edf5" stroke="#718da5" stroke-width="4" transform="rotate(8 440 210)"/>
+  <rect x="340" y="105" width="150" height="190" rx="8" fill="#fff" stroke="#1034a6" stroke-width="4" transform="rotate(-5 415 200)"/>
+  <path d="M370 155h88M370 185h88M370 215h70M370 245h82" stroke="#718da5" stroke-width="6" stroke-linecap="round"/>
+  <text x="146" y="115" fill="#718da5" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="4">EXAM REVISION BUNDLE</text>
+  <text x="146" y="400" fill="#1034a6" font-family="Arial,sans-serif" font-size="55" font-weight="800">MODEL</text>
+  <text x="146" y="465" fill="#1034a6" font-family="Arial,sans-serif" font-size="55" font-weight="800">QUESTION</text>
+  <text x="146" y="530" fill="#c9364b" font-family="Arial,sans-serif" font-size="55" font-weight="800">PAPERS</text>
+  <text x="146" y="585" fill="#42516a" font-family="Arial,sans-serif" font-size="21">DSA · OOPS · Previous patterns</text>
+  <text x="146" y="621" fill="#718da5" font-family="Arial,sans-serif" font-size="18">Organized for quick revision</text>
+  <rect x="146" y="687" width="205" height="44" rx="22" fill="#c9364b"/>
+  <text x="248" y="716" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2">CSE · SEM 3</text>
+</svg>

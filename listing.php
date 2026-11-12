@@ -5,7 +5,27 @@ $listingId = filter_var($_GET['id'] ?? null, FILTER_VALIDATE_INT);
 $listing = $listingId ? hmd_get_listing($conn, $listingId) : null;
 if (!$listing) {
     http_response_code(404);
-    exit('Listing not found.');
+    ?>
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Item unavailable | HandMeDown</title>
+      <link rel="stylesheet" href="css/hmd-marketplace.css">
+    </head>
+    <body>
+      <?php include __DIR__ . '/includes/hmd-header.php'; ?>
+      <main class="hmd-content empty-listing">
+        <span class="eyebrow">This find has moved on</span>
+        <h1>We can’t find this item.</h1>
+        <p>It may have been removed or the link may be out of date. Browse current campus listings to find something similar.</p>
+        <a class="button" href="browse.php">Browse current items</a>
+      </main>
+    </body>
+    </html>
+    <?php
+    exit();
 }
 $bidsStmt = $conn->prepare(
     "SELECT MAX(amount) AS highest_bid, COUNT(*) AS bid_count FROM hmd_bids WHERE listing_id = ? AND status IN ('pending', 'accepted')"
@@ -25,14 +45,22 @@ $error = $_GET['error'] ?? '';
 <section class="item">
   <img src="admin/upload/<?= rawurlencode($listing['image']) ?>" alt="<?= hmd_escape($listing['title']) ?>">
   <div><h1><?= hmd_escape($listing['title']) ?></h1>
-    <p><?= hmd_escape($listing['category']) ?> · <?= hmd_escape($listing['course']) ?> · <?= hmd_escape($listing['semester']) ?></p>
+    <p><?= hmd_escape($listing['category']) ?><?php if (hmd_is_academic_category($listing['category'])): ?> · <?= hmd_escape($listing['course']) ?> · Semester <?= hmd_escape($listing['semester']) ?><?php endif; ?></p>
     <p><?= nl2br(hmd_escape($listing['description'])) ?></p><p>Pickup: <?= hmd_escape($listing['pickup_location']) ?></p>
     <p>Condition: <?php hmd_render_condition_rating($listing['condition_score']); ?> · Age: <?= (int) $listing['age_months'] ?> months</p>
     <p>Original price: ₹<?= hmd_escape(number_format((float) $listing['original_price'], 2)) ?></p>
     <p class="box">Asking ₹<?= hmd_escape(number_format((float) $listing['asking_price'], 2)) ?> · Indicative price estimate: <?= $listing['predicted_price'] === null ? 'not available' : '₹' . hmd_escape(number_format((float) $listing['predicted_price'], 2)) ?> · <?= hmd_escape($listing['deal_badge'] ?? '') ?><br><small>Estimate only, not a guaranteed sale price.</small></p>
     <?php if ($listing['story']): ?><section class="story-note"><span class="story-kicker">A note from the previous owner</span><h2>Why I’m passing it on</h2><blockquote><?= nl2br(hmd_escape($listing['story'])) ?></blockquote></section><?php endif; ?>
     <p>Seller: <?= hmd_escape($listing['seller_name']) ?></p>
-    <a class="btn" href="buy.php?id=<?= (int) $listing['id'] ?>">Buy now</a>
+    <div class="purchase-actions">
+      <a class="btn" href="buy.php?id=<?= (int) $listing['id'] ?>">Buy now</a>
+      <form method="post" action="cart-action.php">
+        <input type="hidden" name="csrf_token" value="<?= hmd_escape(hmd_csrf_token()) ?>">
+        <input type="hidden" name="action" value="add">
+        <input type="hidden" name="listing_id" value="<?= (int) $listing['id'] ?>">
+        <button class="btn btn-secondary" type="submit">Add to cart</button>
+      </form>
+    </div>
     <?php if ((int) $listing['allow_bids'] === 1): ?>
       <div class="box"><p>Highest bid: <?= $bidSummary['highest_bid'] === null ? 'No bids yet' : '₹' . hmd_escape(number_format((float) $bidSummary['highest_bid'], 2)) ?> · <?= (int) $bidSummary['bid_count'] ?> bids</p>
         <?php if (!empty($_SESSION['id']) && (int) $_SESSION['id'] !== (int) $listing['seller_id']): ?>
