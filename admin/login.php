@@ -1,136 +1,72 @@
 <?php
-      include_once('./includes/restriction.php');
-?>
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+require_once __DIR__ . '/includes/config.php';
+$loginError = '';
 
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-    
-    <title>Admin | Login</title>
-
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        justify-content: center;
-        align-items: center;
-      }
-      form {
-        border: 1px solid red;
-        width: 400px;
-        padding: 25px;
-        border-radius: 10px;
-      }
-      .logo-box {
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-      }
-      #signup-btn {
-        text-decoration: none;
-        color: white;
-      }
-      h4{
-        text-align: center;
-        margin: 15px;
-      }
-    </style>
-  </head>
-  <body>
-
-    <form action="<?php $_SERVER['PHP_SELF']; ?>" method ="POST">
-      <div class="logo-box">
-        <img
-          src="./upload/<?php echo $_SESSION['web-img']; ?>"
-          alt="Logo"
-          width="200px"
-        />
-      </div>
-      <h4>Login to admin panel</h4>
-      <div class="row mb-3">
-        <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">ایمیل</label> -->
-        <div class="col-sm-12">
-          <input
-            id="inputEmail"
-            name="userEmail"
-            type="email"
-            class="form-control"
-            placeholder="Email"
-            required
-          />
-        </div>
-      </div>
-      <div class="row mb-3">
-        <!-- <label for="inputPassword3" class="col-sm-2 col-form-label"
-          >رمز عبور</label
-        > -->
-        <div class="col-sm-12">
-          <input
-            id="inputPassword"
-            name="password"
-            type="password"
-            class="form-control"
-            placeholder="Password"
-            required
-          />
-        </div>
-      </div>
-
-
-      <div style="float: right">
-
-        <button 
-        type="submit" 
-        name="login" 
-        class="btn btn-primary"
-        >
-            Login
-        </button>
-      </div>
-    </form>
-
-    <?php 
-        if (isset($_POST['login'])) {
-            include "includes/config.php";
-            if (empty($_POST['userEmail']) || empty($_POST['password'])) {
-                echo '<div class="alert alert-danger">All fields must be filled.</div>';
-                die();
-            } else {
-                $email = mysqli_real_escape_string($conn, $_POST['userEmail']);
-                //   $password = md5($_POST['password']);
-                $password =$_POST['password'];
-            
-                $sql = "SELECT customer_email, customer_pwd FROM customer WHERE customer_email = '{$email}' AND customer_pwd= '{$password}'";
-            
-                $result = mysqli_query($conn, $sql) or die("Error in query");
-            
-                if (mysqli_num_rows($result) > 0) {
-                    $_SESSION['logged-in'] = '1';
-                    header("Location: ./post.php");
-                    } else {
-                    echo '<div class="alert alert-danger">The email and password do not match.</div>';
-                    }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['userEmail'] ?? '');
+    $password = $_POST['password'] ?? '';
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $password === '') {
+        $loginError = 'Enter a valid email address and password.';
+    } else {
+        $stmt = $conn->prepare(
+            'SELECT customer_id, customer_email, customer_pwd, customer_role
+             FROM customer WHERE customer_email = ?'
+        );
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $admin = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+        $valid = false;
+        if ($admin && $admin['customer_role'] === 'admin') {
+            $valid = password_verify($password, $admin['customer_pwd']);
+            if (!$valid && hash_equals($admin['customer_pwd'], $password)) {
+                $valid = true;
+                $newHash = password_hash($password, PASSWORD_DEFAULT);
+                $upgrade = $conn->prepare(
+                    'UPDATE customer SET customer_pwd = ? WHERE customer_id = ?'
+                );
+                $upgrade->bind_param('si', $newHash, $admin['customer_id']);
+                if (!$upgrade->execute()) {
+                    error_log('Unable to upgrade legacy admin password: ' . $upgrade->error);
                 }
+                $upgrade->close();
             }
-    ?>
-    
-
-  </body>
+        }
+        if ($valid) {
+            session_regenerate_id(true);
+            $_SESSION['id'] = (int) $admin['customer_id'];
+            $_SESSION['customer_role'] = 'admin';
+            $_SESSION['logged-in'] = '1';
+            header('Location: post.php');
+            exit();
+        }
+        $loginError = 'The email or password is incorrect, or this account is not an administrator.';
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HandMeDown Admin | Login</title>
+  <style>
+    *{box-sizing:border-box}body{font-family:Arial,sans-serif;max-width:440px;margin:12vh auto;padding:24px;color:#202720}
+    form{padding:24px;border:1px solid #dce5df;border-radius:12px}label{display:block;margin:14px 0 6px}
+    input{width:100%;padding:11px;border:1px solid #cbd6ce;border-radius:6px}button{margin-top:18px;padding:11px 18px;background:#1034a6;color:white;border:0;border-radius:6px}
+    .error{color:#a00}
+  </style>
+</head>
+<body>
+<form method="post">
+  <h1>HandMeDown admin</h1>
+  <?php if ($loginError !== ''): ?><p class="error" role="alert"><?= htmlspecialchars($loginError, ENT_QUOTES, 'UTF-8') ?></p><?php endif; ?>
+  <label for="userEmail">Admin email</label><input id="userEmail" name="userEmail" type="email" required>
+  <label for="password">Password</label><input id="password" name="password" type="password" required>
+  <button type="submit">Log in</button>
+</form>
+</body>
 </html>

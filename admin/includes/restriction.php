@@ -1,9 +1,10 @@
-<?php 
-    
-   //this is restriction for normal user to access admin panel
-   session_start();
-   if($_SESSION['customer_role']!='admin'){
-   header("location:../index.php?دسترسی_مدیر_محدود_است");
-  }
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
+if (empty($_SESSION['id']) || ($_SESSION['customer_role'] ?? '') !== 'admin') {
+    header('Location: login.php');
+    exit();
+}
 ?>

@@ -1,22 +1,12 @@
-<?php
-$total_cart_items = 0;
-if (isset($_SESSION['mycart'])) {
-    $total_cart_items = count($_SESSION['mycart']);
-}
-?>
-
 <!-- mobile bottom navigation -->
 <div class="mobile-bottom-navigation">
   <button class="action-btn" data-mobile-menu-open-btn>
     <ion-icon name="menu-outline"></ion-icon>
   </button>
   <button class="action-btn">
-    <a href="./cart.php">
-      <ion-icon name="bag-handle-outline"></ion-icon>
+    <a href="./browse.php">
+      <ion-icon name="search-outline"></ion-icon>
     </a>
-    <span class="count">
-      <?php echo $total_cart_items; ?>
-    </span>
   </button>
   <button class="action-btn">
     <a href="./index.php">
@@ -24,8 +14,9 @@ if (isset($_SESSION['mycart'])) {
     </a>
   </button>
   <button class="action-btn">
-    <ion-icon name="heart-outline"></ion-icon>
-    <span class="count">0</span>
+    <a href="./sell.php">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </a>
   </button>
   <button class="action-btn" data-mobile-menu-open-btn>
     <ion-icon name="grid-outline"></ion-icon>
@@ -44,19 +35,18 @@ if (isset($_SESSION['mycart'])) {
       <a href="./index.php" class="menu-title">Home</a>
     </li>
     <li class="menu-category">
-      <button class="accordion-menu" data-accordion-btn>
-        <p class="menu-title"><a href="contact.php" class="menu-title">Contact us</a></p>
-        <div>
-        </div>
-      </button>
+      <a href="browse.php" class="menu-title">Browse items</a>
     </li>
     <li class="menu-category">
-      <button class="accordion-menu" data-accordion-btn>
-        <p class="menu-title"><a href="about.php" class="menu-title">About us</a></p>
-        <div>
-        </div>
-      </button>
+      <a href="sell.php" class="menu-title">Sell an item</a>
     </li>
+    <li class="menu-category"><a href="stories.php" class="menu-title">Item stories</a></li>
+    <li class="menu-category"><a href="image-search.php" class="menu-title">Photo search</a></li>
+    <?php if (isset($_SESSION['id'])): ?>
+      <li class="menu-category"><a href="my-listings.php" class="menu-title">My listings</a></li>
+      <li class="menu-category"><a href="my-orders.php" class="menu-title">My orders</a></li>
+      <li class="menu-category"><a href="my-bids.php" class="menu-title">My bids</a></li>
+    <?php endif; ?>
   </ul>
   <div class="menu-bottom">
     <ul class="menu-social-container">

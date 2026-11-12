@@ -1,4 +1,4 @@
-# Full-Stack PHP E-commerce Platform
+# HandMeDown Campus Marketplace
 
 [![PHP Version][php-shield]][php-url]
 [![MySQL Shield][mysql-shield]][mysql-url]
@@ -7,31 +7,25 @@
 [![GitHub forks][forks-shield]][forks-url]
 [![GitHub stars][stars-shield]][stars-url]
 
-A comprehensive, full-stack E-commerce platform built from the ground up using **vanilla PHP**, MySQL, and JavaScript. This project showcases a deep understanding of backend development, database management, and dynamic frontend interactions, complete with a powerful admin panel for seamless store management.
-
-This platform is designed to be a robust, scalable, and secure solution for online retail, demonstrating core software engineering principles without relying on external frameworks.
+A student-to-student campus resale marketplace added to this existing PHP and MySQL shop repository. Students can list and discover second-hand items, place bids, and record cash-on-pickup or simulated UPI orders. The UPI option does not transfer money. The original shop database is retained; HandMeDown data is stored in separate `hmd_` tables.
 
 ---
 
 ### ✨ Key Features
 
-The platform is divided into two main components: a feature-rich storefront for customers and a comprehensive management panel for administrators.
+The project includes a student marketplace and an administrator area for managing listings, orders, and marketplace analytics.
 
 #### 🛍️ Customer-Facing Features:
-- **Secure User Authentication:** Robust registration and login system for a personalized shopping experience.
-- **Dynamic Product Catalog:** Browse products by category with a clean and intuitive interface.
-- **Advanced Search Functionality:** Easily find any product with a powerful and fast search engine.
-- **Interactive Shopping Cart:** Add, update, and remove items from the cart in real-time using JavaScript (AJAX).
-- **User Profile Management:** View order history and manage personal information.
-- **Streamlined Checkout Process:** A seamless, multi-step process to place orders and simulate payment.
+- **Student accounts:** Signup captures hostel, course, and semester, and can restrict addresses to configured campus email domains.
+- **Campus listings:** Students can post items, images, stories, condition, pickup details, and price ranges.
+- **Browse and recommendations:** Search/filter listings and see course-based or similar-item suggestions.
+- **Bidding and demo orders:** Place bids, accept a bid, or record an order without processing real payments.
+- **Illustrative price model:** A scikit-learn linear-regression model demonstrates price badges using synthetic sample data; it is not trained on real sales.
+- **Approximate photo search:** Compare image color histograms to find visual look-alikes.
 
 #### ⚙️ Admin Panel Features:
-- **Secure Admin Login:** Protected backend to ensure data integrity.
-- **Analytics Dashboard:** Get a bird's-eye view of sales statistics, user registrations, and order volumes.
-- **Full CRUD Product Management:** Create, Read, Update, and Delete products and their details (images, price, stock).
-- **Category Management:** Organize products into logical and nested categories.
-- **Order Management:** View, track, and update the status of all customer orders.
-- **User Management:** Oversee registered users and their roles.
+- **Listing and order management:** Review campus listings and orders in the admin area.
+- **Marketplace charts:** View sold listings by category, average savings versus original price, and sold-listing share (not a page-view conversion rate).
 
 ---
 
@@ -57,21 +51,36 @@ Follow these steps to set up and run the project on your local machine.
 - Access to a database management tool like `phpMyAdmin`.
 
 #### Installation Steps
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/AliDev-0/PHP-E-commerce-Platform.git
-    ```
-2.  **Set up the database:**
-    -   Create a new database in `phpMyAdmin` (e.g., `ecommerce_db`).
-    -   Import the `web.sql` file into your newly created database. This will set up all the necessary tables and seed initial data.
+Use the [HandMeDown campus marketplace setup](#handmedown-campus-marketplace) below after placing this repository under XAMPP's `htdocs` directory. The database is configured in `includes/config.php`.
 
-3.  **Configure the connection:**
-    -   Open the `config.php` file (or the relevant configuration file).
-    -   Update the database credentials (host, username, password, and database name) to match your local setup.
+---
 
-4.  **Run the application:**
-    -   Move the project folder into your server's root directory (e.g., `htdocs` for XAMPP).
-    -   Open your web browser and navigate to `http://localhost/PHP-E-commerce-Platform`.
+## HandMeDown campus marketplace
+
+This repository now includes a student resale marketplace alongside its original shop files. The marketplace stores its data in the existing `web` database and keeps its additional tables prefixed with `hmd_`.
+
+The HandMeDown brand palette uses Egyptian blue (`#1034A6`), stone blue (`#718DA5`), and scarlet red (`#C9364B`) as a restrained accent. The team-supplied logo is stored at `images/brand/handmedown-logo.jpg`; the homepage includes responsive campus-shopping and seller banners.
+
+### Local setup
+
+1. Start Apache and MySQL in XAMPP, create/select the `web` database, and import `web.sql` only if the existing shop tables are not already present.
+2. Back up the database, then run `hmd-schema.sql` against `web` to add student fields and marketplace tables.
+3. Optional, local-only preview data: run `hmd-sample-data.sql` after the schema. It adds 20 clearly fictional listings and five pending sample orders using `@handmedown.invalid` accounts. Never import this sample data into production.
+4. Check `includes/config.php` for the local MySQL credentials.
+5. Signup allows `presidencyuniversity.in` by default. Override the allowed domain list with the `HMD_COLLEGE_EMAIL_DOMAINS` environment variable; multiple domains can be comma-separated. Signup checks the email domain but does not verify mailbox ownership.
+6. To generate the illustrative sample price model, install `pandas`, `numpy`, and `scikit-learn`, then run `python ml/train_price_model_synthetic.py`. It creates `ml/model.json` and `ml/sample_dataset.csv` from deterministic synthetic data. Price badges are demonstrations only; the estimates are not based on verified transactions.
+7. `python ml/train_price_model.py` is a separate real-sales trainer. It requires at least 30 verified paid cash-on-pickup orders and does not use or create synthetic training data.
+8. To enable recommendations and photo search, install `ml/requirements.txt`, set `HMD_DB_HOST`, `HMD_DB_PORT`, `HMD_DB_USER`, `HMD_DB_PASSWORD`, and `HMD_DB_NAME` for Python, and run:
+   - `python ml/similar_items.py`
+   - `python ml/build_image_vectors.py`
+   - `python ml/image_search_service.py`
+9. Open the project at `http://localhost/shop/`.
+
+Photo matching compares color histograms to find visual look-alikes; it does not identify exact products.
+
+### Demo checkout
+
+Checkout offers **Cash on pickup** and **UPI (demo)**. Both save an order and mark the listing sold; the UPI demo does not open a payment app, collect payment details, transfer money, or mark payment as paid. Do not present it as a live payment gateway. Review `CREDITS.md` for the project file map and data/AI notes.
 
 ---
 

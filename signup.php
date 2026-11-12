@@ -1,7 +1,11 @@
-<?php include_once('./includes/headerNav.php'); ?>
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+?>
 
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,45 +17,13 @@
       crossorigin="anonymous"
     />
     <title>Sign up</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        justify-content: center;
-        align-items: center;
-      }
-      .registeration-box {
-        width: 60%;
-        padding: 15px;
-      }
-      .logo-box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 25px;
-      }
-      .signup-title {
-        text-align: center;
-        text-transform: uppercase;
-        margin: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="css/hmd-marketplace.css">
   </head>
   <body>
-    <div class="registeration-box">
+    <?php include __DIR__ . '/includes/hmd-header.php'; ?>
+    <main class="auth-card registeration-box">
       <div class="logo-box">
-        <img
-          src="admin/upload/<?php echo htmlspecialchars($_SESSION['web-img'] ?? 'default-logo.png'); ?>"
-          alt="Logo"
-          width="200px"
-        />
+        <strong style="font-size:1.55rem;color:#1034a6;">HandMeDown</strong>
       </div>
       <h1 class="signup-title">Please sign up</h1>
       <hr>
@@ -71,8 +43,9 @@
             class="form-control"
             name="name"
             placeholder="Full name..."
+            required
           />
-        </div>
+        </main>
         <div class="col-md-6">
           <label for="inputAddress" class="form-label">Phone number</label>
           <input
@@ -80,24 +53,60 @@
             class="form-control"
             name="number"
             placeholder="+98 912 345 6789"
+            required
           />
         </div>
         <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">Email</label>
-          <input 
-            type="text" 
+          <label for="inputEmail4" class="form-label">College email</label>
+          <input
+            type="email"
             class="form-control"
             name="email"
-            placeholder="Email"
+            placeholder="name@presidencyuniversity.in"
+            required
           />
         </div>
         <div class="col-md-6">
-          <label for="inputAddress" class="form-label">Game ID</label>
+          <label for="inputAddress" class="form-label">Campus address</label>
           <input
             type="text"
             class="form-control"
             name="address"
-            placeholder="Example: 123456789"
+            placeholder="Hostel or campus location"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="hostel" class="form-label">Hostel</label>
+          <input
+            id="hostel"
+            type="text"
+            class="form-control"
+            name="hostel"
+            maxlength="100"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="course" class="form-label">Course</label>
+          <input
+            id="course"
+            type="text"
+            class="form-control"
+            name="course"
+            maxlength="100"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="semester" class="form-label">Semester</label>
+          <input
+            id="semester"
+            type="text"
+            class="form-control"
+            name="semester"
+            maxlength="50"
+            required
           />
         </div>
         <div class="col-md-6">
@@ -128,6 +137,7 @@
           >Sign up</button>
         </div>
       </form>
+      <p class="text-center mt-3">Already have an account? <a href="login.php">Log in</a></p>
     </div>
     <script src="./js/jquery.js" type="text/javascript"></script>
     <script src="./js/bootstrap.min.js" type="text/javascript"></script>

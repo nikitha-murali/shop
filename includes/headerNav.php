@@ -12,6 +12,7 @@ $row5 = $result5->fetch_assoc();
 $_SESSION['web-name'] = $row5['website_name'];
 $_SESSION['web-img'] = $row5['website_logo'];
 $_SESSION['web-footer'] = $row5['website_footer'];
+$_SESSION['web-name'] = 'HandMeDown';
 
 // TODO: Also update setting to add info email, whatsapp, address etc to change it dynamically
 ?>

@@ -1,176 +1,122 @@
-<?php  session_start();
- include_once 'includes/config.php';
-//  all functions
-require_once 'functions/functions.php';
+<?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
- //run whenever this file is used no need of isset or any condition to get website image footer etc
- $sql5 ="SELECT * FROM  settings;";
- $result5 = $conn->query($sql5);
- $row5 = $result5->fetch_assoc();
- $_SESSION['web-name'] = $row5['website_name'];
- $_SESSION['web-img'] = $row5['website_logo'];
- $_SESSION['web-footer'] = $row5['website_footer'];
-?>
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-    <title>Login</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        justify-content: center;
-        align-items: center;
-      }
-      form {
-        border: 1px solid red;
-        width: 400px;
-        padding: 25px;
-        border-radius: 10px;
-      }
-      .logo-box {
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-      }
-      #signup-btn {
-        text-decoration: none;
-        color: white;
-      }
-    </style>
-  </head>
-  <body>
+require_once __DIR__ . '/includes/config.php';
 
-  	 <?php 
-     if( !( isset( $_SESSION['id']))){
-     ?>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?> " method="post">
-      <div class="logo-box">
-        <img
-          src="admin/upload/<?php echo $_SESSION['web-img']; ?>"
-          alt="Logo"
-          width="200px"
-        />
-      </div>
-      <div class="row mb-3">
-        <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label> -->
-        <div class="col-sm-12">
-          <input
-            id="inputEmail"
-            name="email"
-            type="email"
-            class="form-control"
-            placeholder="Email"
-          />
-        </div>
-      </div>
-      <div class="row mb-3">
-        <!-- <label for="inputPassword3" class="col-sm-2 col-form-label"
-          >Password</label
-        > -->
-        <div class="col-sm-12">
-          <input
-            id="inputPassword"
-            name="pwd"
-            type="password"
-            class="form-control"
-            placeholder="Password"
-          />
-        </div>
-      </div>
+if (!empty($_SESSION['id'])) {
+    header('Location: profile.php?id=' . (int) $_SESSION['id']);
+    exit();
+}
 
-      <div class="row mb-3">
-        <div class="col-sm-10">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck1" />
-            <label class="form-check-label" for="gridCheck1">
-              Remember me
-            </label>
-          </div>
-        </div>
-      </div>
-      <div style="float: right">
-        <button 
-        type="submit" 
-        class="btn btn-primary">
-        <a href="./signup.php" id="signup-btn">
-             Sign up
-		</a>
-           
-        </button>
+$loginError = '';
+$email = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = strtolower(trim($_POST['email'] ?? ''));
+    $password = $_POST['pwd'] ?? '';
 
-        <button 
-        type="submit" 
-        class="btn btn-primary"
-        name="login">
-            Login
-        </button>
-      </div>
-    </form>
+    if ($email === '' || $password === '') {
+        $loginError = 'Enter both your email and password.';
+    } else {
+        $stmt = $conn->prepare(
+            'SELECT customer_id, customer_pwd, customer_role
+             FROM customer WHERE customer_email = ? LIMIT 1'
+        );
+        if (!$stmt) {
+            error_log('Unable to prepare customer login query: ' . $conn->error);
+            $loginError = 'Login is temporarily unavailable. Please try again.';
+        } else {
+            $stmt->bind_param('s', $email);
+            if (!$stmt->execute()) {
+                error_log('Unable to execute customer login query: ' . $stmt->error);
+                $loginError = 'Login is temporarily unavailable. Please try again.';
+            } else {
+                $row = $stmt->get_result()->fetch_assoc();
+                if ($row) {
+                    $storedPassword = (string) $row['customer_pwd'];
+                    $passwordIsValid = password_verify($password, $storedPassword);
+                    $legacyPassword = !$passwordIsValid
+                        && strlen($storedPassword) < 40
+                        && hash_equals($storedPassword, $password);
 
-	<?php }?>
+                    if ($legacyPassword) {
+                        $newHash = password_hash($password, PASSWORD_DEFAULT);
+                        if ($newHash === false) {
+                            error_log('Unable to hash legacy customer password after login.');
+                            $passwordIsValid = false;
+                        } else {
+                            $upgrade = $conn->prepare(
+                                'UPDATE customer SET customer_pwd = ? WHERE customer_id = ?'
+                            );
+                            if (!$upgrade) {
+                                error_log('Unable to prepare legacy password upgrade: ' . $conn->error);
+                                $passwordIsValid = false;
+                            } else {
+                                $upgrade->bind_param('si', $newHash, $row['customer_id']);
+                                $passwordIsValid = $upgrade->execute();
+                                if (!$passwordIsValid) {
+                                    error_log('Unable to upgrade legacy password: ' . $upgrade->error);
+                                }
+                                $upgrade->close();
+                            }
+                        }
+                    }
 
-    
-	<?php
- //1st step(i.e connection) done through config file
-if(isset($_POST['login'])){
+                    if ($passwordIsValid) {
+                        session_regenerate_id(true);
+                        $_SESSION['id'] = (int) $row['customer_id'];
+                        $_SESSION['customer_role'] = $row['customer_role'];
+                        $stmt->close();
+                        header('Location: profile.php?id=' . (int) $row['customer_id']);
+                        exit();
+                    }
+                }
 
-    if(empty($_POST['email'])){
-           echo "<h4 id='error_login'>Please enter your email</h4>";
-    }
-
-    if(empty($_POST['pwd'])){
-        echo "<h4 id='error_login'>Please enter your password</h4>";
- }
-
-$email = mysqli_real_escape_string($conn,$_POST['email']);
-$password =mysqli_real_escape_string($conn,$_POST['pwd']);
-
-$sql ="SELECT * FROM  customer WHERE customer_email='{$email}';";
-$result = $conn->query($sql);
-
-if($result->num_rows==1){ //if any one data found go inside it
-    $row = $result->fetch_assoc();
-    if($password == $row['customer_pwd']){
-
-    //session will be created only if users email and passwords matched
-	session_start();
-	$_SESSION['id'] = $row['customer_id'];
-	$_SESSION['customer_role'] = $row['customer_role'];
-
-    header("location:profile.php?id={$_SESSION['id']}");
-            // put exit after a redirect as header() does not stop execution
-            exit;}else{
-                echo "<h4 id='error_login'>Incorrect password</h4>";//as user get inside if statem if userEmail matched
+                $loginError = 'Email or password is incorrect. Check your details or sign up if you are new.';
             }
-
-
-}else{
-    if($_POST['email']){ //it means it will run if email field is filled
-    echo "<h4 id='error_login'>Please sign up first</h4>";
+            $stmt->close();
+        }
     }
 }
-}//end of 1st ifstatement
-
 ?>
-
-
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Log in | HandMeDown</title>
+    <link rel="stylesheet" href="css/hmd-marketplace.css">
+  </head>
+  <body>
+    <?php include __DIR__ . '/includes/hmd-header.php'; ?>
+    <main class="auth-card">
+      <h1>HandMeDown</h1>
+      <h2>Log in</h2>
+      <?php if ($loginError !== ''): ?>
+        <p class="error" role="alert"><?= htmlspecialchars($loginError, ENT_QUOTES, 'UTF-8') ?></p>
+      <?php endif; ?>
+      <form class="hmd-form" action="login.php" method="post">
+        <label for="inputEmail">College email</label>
+        <input
+          id="inputEmail"
+          name="email"
+          type="email"
+          value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>"
+          autocomplete="username"
+          required
+        />
+        <label for="inputPassword">Password</label>
+        <input
+          id="inputPassword"
+          name="pwd"
+          type="password"
+          autocomplete="current-password"
+          required
+        />
+        <button type="submit">Log in</button>
+      </form>
+      <p class="signup">New here? <a href="signup.php">Create an account</a></p>
+    </main>
   </body>
 </html>

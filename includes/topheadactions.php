@@ -1,10 +1,3 @@
-<?php
-$total_cart_items = 0;
-if (isset($_SESSION['mycart'])) {
-    $total_cart_items = count($_SESSION['mycart']);
-}
-?>
-
 <div class="header-top">
   <div class="container">
     <ul class="header-social-container">
@@ -30,10 +23,7 @@ if (isset($_SESSION['mycart'])) {
       </li>
     </ul>
     <div class="header-alert-news">
-      <p>
-        <b>Pay</b>
-        enjoy the experience; without borders!
-      </p>
+      <p><b>HandMeDown</b> — campus reuse, made easy</p>
     </div>
     <div class="header-top-actions">
       <!-- <select name="currency">
@@ -52,15 +42,13 @@ if (isset($_SESSION['mycart'])) {
 <div class="header-main">
   <div class="container">
     <!-- logo section -->
-    <a href="./index.php?id=<?php echo (isset($_SESSION['customer_name'])) ? $_SESSION['id'] : 'unknown'; ?>" class="header-logo" style="color: hsl(0, 0%, 13%);">
-      <h1 style="text-align: center;">
-        <img src="admin/upload/<?php echo $_SESSION['web-img']; ?>" alt="Logo" width="200px">
-      </h1>
+    <a href="./index.php" class="header-logo" aria-label="HandMeDown home">
+      <img src="./images/brand/handmedown-logo.jpg" alt="HandMeDown" style="width: 150px; height: 90px; object-fit: contain; mix-blend-mode: multiply;">
     </a>
     <!-- search input -->
     <div class="header-search-container">
-      <form class="search-form" method="post" action="./search.php">
-        <input type="search" name="search" class="search-field" placeholder="Enter product name..." required oninvalid="this.setCustomValidity('Enter product name...')" oninput="this.setCustomValidity('')" />
+      <form class="search-form" method="get" action="./browse.php">
+        <input type="search" name="q" class="search-field" placeholder="Search campus listings..." required />
         <button class="search-btn" type="submit" name="submit">
           <ion-icon name="search-outline"></ion-icon>
         </button>
@@ -84,21 +72,9 @@ if (isset($_SESSION['mycart'])) {
           </a>
         </button>
       <?php } ?>
-      <!-- Favourite Counter -->
-      <button class="action-btn">
-        <ion-icon name="heart-outline"></ion-icon>
-        <span class="count">0</span>
-      </button>
-      <!-- Cart Button -->
-      <?php if (!(isset($_SESSION['logged-in']))) { ?>
-        <button class="action-btn">
-          <a href="./cart.php">
-            <ion-icon name="bag-handle-outline"></ion-icon>
-          </a>
-          <span class="count"> 
-            <?php echo $total_cart_items; ?>
-          </span>
-        </button>
+      <?php if (isset($_SESSION['id'])) { ?>
+        <a class="action-btn" href="./my-orders.php" aria-label="My orders">Orders</a>
+        <a class="action-btn" href="./my-bids.php" aria-label="My bids">Bids</a>
       <?php } ?>
     </div>
   </div>
