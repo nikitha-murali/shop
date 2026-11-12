@@ -1,0 +1,601 @@
+category,original_price,condition_score,age_months,resale_price,data_source
+Cycle,27998,4,3,27247.0,synthetic
+Textbook,22313,3,38,13701.0,synthetic
+Textbook,14292,1,35,7406.0,synthetic
+Hostel Essentials,10170,4,58,4925.0,synthetic
+Notes,26117,3,60,12588.0,synthetic
+Electronics,424,3,24,266.0,synthetic
+Textbook,21974,5,32,17359.0,synthetic
+Notes,16071,3,22,10293.0,synthetic
+Hostel Essentials,14843,1,2,12295.0,synthetic
+Notes,5808,5,5,5754.0,synthetic
+Cycle,8639,2,5,6738.0,synthetic
+Hostel Essentials,9705,3,57,4936.0,synthetic
+Hostel Essentials,1385,3,25,989.0,synthetic
+Cycle,17059,5,4,19208.0,synthetic
+Hostel Essentials,17145,1,16,11841.0,synthetic
+Textbook,11846,2,55,5879.0,synthetic
+Cycle,27050,2,45,13957.0,synthetic
+Hostel Essentials,13851,3,21,10340.0,synthetic
+Textbook,2313,2,21,1675.0,synthetic
+Notes,1656,4,60,790.0,synthetic
+Textbook,11126,1,25,7143.0,synthetic
+Cycle,5613,5,8,5155.0,synthetic
+Hostel Essentials,25862,5,40,16962.0,synthetic
+Cycle,25281,1,14,18779.0,synthetic
+Notes,28918,4,38,18956.0,synthetic
+Hostel Essentials,15430,5,48,9582.0,synthetic
+Hostel Essentials,14733,2,34,8376.0,synthetic
+Hostel Essentials,26571,4,23,20107.0,synthetic
+Textbook,19135,5,37,14005.0,synthetic
+Electronics,25741,5,26,22209.0,synthetic
+Hostel Essentials,5966,3,36,3298.0,synthetic
+Cycle,5916,4,12,6106.0,synthetic
+Hostel Essentials,1835,1,46,822.0,synthetic
+Electronics,12078,3,9,9583.0,synthetic
+Electronics,23679,4,17,19009.0,synthetic
+Notes,15845,4,52,9063.0,synthetic
+Textbook,16520,2,32,10525.0,synthetic
+Notes,3060,2,36,1817.0,synthetic
+Textbook,3951,4,42,2806.0,synthetic
+Notes,2697,1,47,1551.0,synthetic
+Cycle,11117,2,4,9916.0,synthetic
+Electronics,25269,4,22,19672.0,synthetic
+Textbook,22236,4,44,13903.0,synthetic
+Electronics,24828,5,29,20278.0,synthetic
+Notes,9034,4,27,6649.0,synthetic
+Hostel Essentials,11591,5,55,6592.0,synthetic
+Cycle,28772,2,58,12137.0,synthetic
+Textbook,21242,3,55,9133.0,synthetic
+Electronics,20724,4,3,22605.0,synthetic
+Electronics,15610,4,36,10542.0,synthetic
+Cycle,3316,2,8,2921.0,synthetic
+Notes,22468,4,41,13211.0,synthetic
+Textbook,11187,1,15,7333.0,synthetic
+Textbook,9558,2,4,8402.0,synthetic
+Electronics,21759,4,39,13274.0,synthetic
+Electronics,14300,4,20,11426.0,synthetic
+Notes,5195,1,56,2241.0,synthetic
+Electronics,26805,5,34,20085.0,synthetic
+Hostel Essentials,11931,4,6,11323.0,synthetic
+Notes,24527,2,26,16525.0,synthetic
+Cycle,12259,4,50,7557.0,synthetic
+Notes,9402,2,18,6517.0,synthetic
+Cycle,24092,1,40,13056.0,synthetic
+Cycle,26471,3,42,14944.0,synthetic
+Cycle,9523,5,17,8196.0,synthetic
+Hostel Essentials,12052,5,14,12022.0,synthetic
+Electronics,16656,1,45,8325.0,synthetic
+Hostel Essentials,20519,4,55,10960.0,synthetic
+Notes,15137,1,24,10492.0,synthetic
+Notes,21389,5,12,20816.0,synthetic
+Electronics,24857,3,31,17043.0,synthetic
+Cycle,12140,5,43,7560.0,synthetic
+Hostel Essentials,25419,3,36,15246.0,synthetic
+Electronics,24839,4,30,17201.0,synthetic
+Electronics,29334,1,12,18843.0,synthetic
+Electronics,14041,4,44,7641.0,synthetic
+Electronics,25398,3,34,14040.0,synthetic
+Cycle,28827,1,24,19324.0,synthetic
+Textbook,28235,3,40,16940.0,synthetic
+Notes,28111,2,21,20066.0,synthetic
+Electronics,11831,1,10,8656.0,synthetic
+Hostel Essentials,27023,5,39,17797.0,synthetic
+Electronics,13186,4,16,10539.0,synthetic
+Notes,27265,3,58,13203.0,synthetic
+Textbook,24315,2,19,18706.0,synthetic
+Notes,4539,2,41,2745.0,synthetic
+Textbook,3966,4,11,3442.0,synthetic
+Hostel Essentials,19503,1,0,16089.0,synthetic
+Electronics,7474,3,60,3034.0,synthetic
+Notes,22273,2,1,21928.0,synthetic
+Electronics,23459,1,0,16449.0,synthetic
+Electronics,15933,3,13,12494.0,synthetic
+Electronics,23387,2,4,18390.0,synthetic
+Electronics,15947,5,21,12293.0,synthetic
+Hostel Essentials,17158,4,46,10341.0,synthetic
+Textbook,6162,2,9,5384.0,synthetic
+Textbook,17654,5,60,9173.0,synthetic
+Hostel Essentials,4949,4,58,2538.0,synthetic
+Cycle,18665,3,24,13871.0,synthetic
+Electronics,23527,1,16,14673.0,synthetic
+Electronics,23058,1,6,15436.0,synthetic
+Hostel Essentials,4615,5,27,3748.0,synthetic
+Textbook,23706,3,34,16558.0,synthetic
+Notes,21887,5,8,22574.0,synthetic
+Notes,4595,3,59,2100.0,synthetic
+Electronics,2450,3,18,1944.0,synthetic
+Hostel Essentials,19583,5,36,17133.0,synthetic
+Electronics,12456,3,33,7677.0,synthetic
+Cycle,15022,3,42,9143.0,synthetic
+Electronics,866,5,25,625.0,synthetic
+Textbook,7276,2,52,3458.0,synthetic
+Hostel Essentials,19862,2,5,18462.0,synthetic
+Hostel Essentials,19042,5,39,14823.0,synthetic
+Electronics,8893,5,45,5252.0,synthetic
+Cycle,10367,5,47,6232.0,synthetic
+Electronics,14111,5,59,6723.0,synthetic
+Hostel Essentials,10303,1,56,4131.0,synthetic
+Textbook,8700,5,14,8407.0,synthetic
+Textbook,9497,1,22,5875.0,synthetic
+Hostel Essentials,15546,5,13,13445.0,synthetic
+Cycle,16706,4,6,17187.0,synthetic
+Electronics,19781,3,46,10184.0,synthetic
+Hostel Essentials,7586,3,56,3420.0,synthetic
+Notes,5132,4,27,3506.0,synthetic
+Hostel Essentials,9510,4,54,5328.0,synthetic
+Electronics,23345,3,2,19162.0,synthetic
+Notes,25112,1,46,12069.0,synthetic
+Textbook,23508,2,2,23034.0,synthetic
+Textbook,11854,1,38,6843.0,synthetic
+Cycle,28274,5,59,15694.0,synthetic
+Electronics,17199,5,24,13557.0,synthetic
+Cycle,11514,1,44,5413.0,synthetic
+Notes,17578,4,47,9745.0,synthetic
+Textbook,26213,2,31,16381.0,synthetic
+Notes,13114,3,25,7639.0,synthetic
+Notes,2946,5,9,2809.0,synthetic
+Hostel Essentials,9302,3,42,5199.0,synthetic
+Hostel Essentials,29819,5,55,16257.0,synthetic
+Hostel Essentials,14016,2,22,9317.0,synthetic
+Notes,6484,2,22,4544.0,synthetic
+Notes,26456,5,10,26140.0,synthetic
+Electronics,11309,5,20,10263.0,synthetic
+Hostel Essentials,9698,4,38,6178.0,synthetic
+Electronics,2941,5,48,1807.0,synthetic
+Textbook,28394,3,57,13739.0,synthetic
+Hostel Essentials,25079,4,49,14171.0,synthetic
+Electronics,11761,1,30,6650.0,synthetic
+Cycle,14655,3,1,13827.0,synthetic
+Cycle,7735,4,11,6231.0,synthetic
+Cycle,28878,2,33,16090.0,synthetic
+Cycle,27583,2,38,16401.0,synthetic
+Hostel Essentials,4466,1,21,2832.0,synthetic
+Notes,7394,3,35,4588.0,synthetic
+Textbook,26771,2,59,11788.0,synthetic
+Textbook,6661,4,45,4169.0,synthetic
+Cycle,10882,2,19,8201.0,synthetic
+Notes,24287,4,59,13970.0,synthetic
+Textbook,7203,1,18,5094.0,synthetic
+Textbook,25408,5,8,25986.0,synthetic
+Notes,19765,1,40,10524.0,synthetic
+Cycle,5696,2,44,3317.0,synthetic
+Notes,1051,2,55,575.0,synthetic
+Textbook,5284,4,5,5529.0,synthetic
+Hostel Essentials,15835,3,39,8375.0,synthetic
+Textbook,28806,4,58,15376.0,synthetic
+Electronics,14287,4,34,8488.0,synthetic
+Textbook,3981,4,52,2132.0,synthetic
+Textbook,1597,3,7,1669.0,synthetic
+Notes,5748,3,0,5400.0,synthetic
+Textbook,13110,3,15,10438.0,synthetic
+Cycle,13339,4,55,7873.0,synthetic
+Hostel Essentials,9252,4,48,5215.0,synthetic
+Cycle,18701,3,44,9912.0,synthetic
+Electronics,7572,5,8,7135.0,synthetic
+Electronics,7759,1,57,2829.0,synthetic
+Hostel Essentials,27920,3,57,12403.0,synthetic
+Electronics,16096,4,22,12126.0,synthetic
+Electronics,18009,4,57,7364.0,synthetic
+Electronics,17229,3,15,13727.0,synthetic
+Cycle,4751,5,38,3397.0,synthetic
+Notes,17525,1,30,10972.0,synthetic
+Cycle,22751,1,18,15247.0,synthetic
+Textbook,1413,3,12,1264.0,synthetic
+Textbook,11181,4,56,5706.0,synthetic
+Notes,8475,3,51,4153.0,synthetic
+Cycle,18026,4,48,10606.0,synthetic
+Notes,27195,4,21,21788.0,synthetic
+Hostel Essentials,11491,3,44,6337.0,synthetic
+Electronics,2092,2,58,975.0,synthetic
+Hostel Essentials,19211,4,8,17097.0,synthetic
+Textbook,9396,3,47,5536.0,synthetic
+Hostel Essentials,20506,5,37,14359.0,synthetic
+Textbook,4335,2,29,2911.0,synthetic
+Electronics,8613,4,49,4772.0,synthetic
+Hostel Essentials,11741,4,36,6744.0,synthetic
+Cycle,24957,3,14,19768.0,synthetic
+Cycle,16572,5,41,12140.0,synthetic
+Notes,18601,4,15,15664.0,synthetic
+Hostel Essentials,21206,5,22,18224.0,synthetic
+Electronics,18217,4,27,13197.0,synthetic
+Hostel Essentials,26502,2,30,13106.0,synthetic
+Cycle,6657,2,49,3079.0,synthetic
+Electronics,19190,5,15,15824.0,synthetic
+Textbook,7731,1,5,6118.0,synthetic
+Hostel Essentials,16781,5,41,10596.0,synthetic
+Hostel Essentials,11952,5,42,7466.0,synthetic
+Textbook,27545,5,8,27017.0,synthetic
+Electronics,1161,3,35,661.0,synthetic
+Textbook,16546,4,29,10915.0,synthetic
+Hostel Essentials,1783,2,43,1069.0,synthetic
+Notes,11030,1,4,9809.0,synthetic
+Textbook,19931,2,9,17884.0,synthetic
+Notes,7270,5,6,7384.0,synthetic
+Hostel Essentials,9597,2,58,3936.0,synthetic
+Electronics,20318,4,41,14272.0,synthetic
+Cycle,21650,3,9,17714.0,synthetic
+Notes,19445,5,0,23592.0,synthetic
+Hostel Essentials,2383,3,50,1250.0,synthetic
+Cycle,10251,3,29,6611.0,synthetic
+Notes,22243,2,0,18973.0,synthetic
+Textbook,25919,4,40,16671.0,synthetic
+Hostel Essentials,6543,1,43,3070.0,synthetic
+Hostel Essentials,11939,5,24,8636.0,synthetic
+Notes,26106,5,18,23782.0,synthetic
+Electronics,3866,1,9,2593.0,synthetic
+Hostel Essentials,27210,1,23,17886.0,synthetic
+Cycle,11384,5,46,7176.0,synthetic
+Textbook,20726,5,53,12659.0,synthetic
+Electronics,13284,3,12,10524.0,synthetic
+Notes,11919,1,24,7359.0,synthetic
+Notes,11367,1,27,6909.0,synthetic
+Textbook,915,3,32,633.0,synthetic
+Electronics,27328,5,24,24892.0,synthetic
+Textbook,22869,4,37,14350.0,synthetic
+Cycle,27709,1,39,14118.0,synthetic
+Electronics,16950,4,0,15974.0,synthetic
+Electronics,28833,5,0,27279.0,synthetic
+Notes,2606,4,42,1474.0,synthetic
+Cycle,10836,3,49,5252.0,synthetic
+Electronics,17187,1,57,6875.0,synthetic
+Cycle,14480,4,32,9854.0,synthetic
+Hostel Essentials,333,5,24,269.0,synthetic
+Cycle,3200,3,11,2466.0,synthetic
+Cycle,13624,4,51,7197.0,synthetic
+Hostel Essentials,24835,1,7,19950.0,synthetic
+Notes,18456,5,13,18230.0,synthetic
+Hostel Essentials,8700,2,29,4817.0,synthetic
+Notes,24110,5,33,18828.0,synthetic
+Cycle,26687,1,34,14564.0,synthetic
+Notes,8824,4,14,7083.0,synthetic
+Textbook,27576,4,14,26192.0,synthetic
+Textbook,7076,5,12,7434.0,synthetic
+Electronics,17361,2,18,9966.0,synthetic
+Hostel Essentials,10033,5,38,7174.0,synthetic
+Notes,21625,3,13,17164.0,synthetic
+Cycle,1917,4,1,1890.0,synthetic
+Notes,1750,1,39,900.0,synthetic
+Electronics,27956,4,60,14150.0,synthetic
+Notes,5427,2,45,3106.0,synthetic
+Electronics,26437,3,42,14771.0,synthetic
+Textbook,20073,4,24,16928.0,synthetic
+Cycle,18124,3,16,16809.0,synthetic
+Cycle,21828,1,39,11603.0,synthetic
+Hostel Essentials,2376,4,36,1426.0,synthetic
+Electronics,1660,2,46,838.0,synthetic
+Hostel Essentials,2646,4,3,2661.0,synthetic
+Electronics,760,4,14,612.0,synthetic
+Cycle,27973,1,40,14516.0,synthetic
+Textbook,13505,2,55,7581.0,synthetic
+Notes,3881,1,51,1740.0,synthetic
+Electronics,9573,4,45,5049.0,synthetic
+Hostel Essentials,4498,3,49,1927.0,synthetic
+Hostel Essentials,27144,1,57,11848.0,synthetic
+Hostel Essentials,23597,2,7,20675.0,synthetic
+Cycle,368,5,47,213.0,synthetic
+Cycle,9151,4,9,8842.0,synthetic
+Cycle,19747,2,27,12660.0,synthetic
+Notes,12435,5,40,8443.0,synthetic
+Hostel Essentials,6823,4,20,5117.0,synthetic
+Hostel Essentials,12389,2,17,8806.0,synthetic
+Hostel Essentials,12873,1,14,9451.0,synthetic
+Hostel Essentials,21047,5,56,10999.0,synthetic
+Electronics,16692,2,1,13320.0,synthetic
+Electronics,14249,2,34,7478.0,synthetic
+Textbook,18490,2,7,17214.0,synthetic
+Textbook,24395,4,34,16313.0,synthetic
+Textbook,2905,1,44,1570.0,synthetic
+Notes,14954,1,46,6652.0,synthetic
+Notes,22733,3,11,16475.0,synthetic
+Cycle,8820,4,53,4645.0,synthetic
+Notes,26039,4,20,21326.0,synthetic
+Notes,5958,3,28,4408.0,synthetic
+Textbook,1184,2,55,606.0,synthetic
+Textbook,22687,5,34,17554.0,synthetic
+Hostel Essentials,22953,5,51,11094.0,synthetic
+Notes,6702,1,4,5568.0,synthetic
+Hostel Essentials,29819,2,51,12730.0,synthetic
+Textbook,18326,3,56,8906.0,synthetic
+Hostel Essentials,1231,3,8,1180.0,synthetic
+Notes,18102,5,54,11103.0,synthetic
+Textbook,10568,5,33,7507.0,synthetic
+Cycle,28903,4,3,28166.0,synthetic
+Notes,8348,2,44,4680.0,synthetic
+Notes,2825,1,21,1833.0,synthetic
+Textbook,26308,4,14,23368.0,synthetic
+Electronics,6344,5,54,3161.0,synthetic
+Notes,9938,5,17,9203.0,synthetic
+Notes,19898,2,35,12331.0,synthetic
+Hostel Essentials,9949,4,18,7543.0,synthetic
+Hostel Essentials,10027,1,19,5672.0,synthetic
+Textbook,14936,5,34,12830.0,synthetic
+Textbook,3988,1,21,2592.0,synthetic
+Notes,16335,4,31,11887.0,synthetic
+Hostel Essentials,26877,4,40,15591.0,synthetic
+Notes,29799,3,31,18739.0,synthetic
+Electronics,21985,5,42,14634.0,synthetic
+Textbook,17875,1,49,8529.0,synthetic
+Textbook,6793,5,9,7331.0,synthetic
+Hostel Essentials,26199,2,7,22255.0,synthetic
+Hostel Essentials,2992,4,27,2078.0,synthetic
+Cycle,21355,1,43,11092.0,synthetic
+Electronics,25296,5,50,15107.0,synthetic
+Notes,14010,1,27,9328.0,synthetic
+Electronics,17163,5,50,9533.0,synthetic
+Textbook,24370,2,11,20040.0,synthetic
+Notes,27898,3,42,15177.0,synthetic
+Electronics,1132,4,41,706.0,synthetic
+Hostel Essentials,15588,4,49,8684.0,synthetic
+Notes,12384,3,0,10852.0,synthetic
+Notes,7041,5,41,4602.0,synthetic
+Textbook,25962,4,32,18741.0,synthetic
+Textbook,4136,3,51,2155.0,synthetic
+Electronics,10180,1,50,4227.0,synthetic
+Cycle,12625,2,21,7972.0,synthetic
+Electronics,6922,3,34,4199.0,synthetic
+Textbook,20568,5,4,21705.0,synthetic
+Electronics,19251,3,6,17304.0,synthetic
+Textbook,278,1,5,229.0,synthetic
+Hostel Essentials,4797,2,38,2821.0,synthetic
+Electronics,11951,3,36,6470.0,synthetic
+Notes,26423,1,56,11707.0,synthetic
+Notes,12204,5,0,14071.0,synthetic
+Textbook,12851,2,51,6889.0,synthetic
+Notes,20180,4,51,11026.0,synthetic
+Electronics,23679,4,9,19331.0,synthetic
+Electronics,5969,4,11,5686.0,synthetic
+Hostel Essentials,20152,3,50,10195.0,synthetic
+Cycle,26301,3,49,13075.0,synthetic
+Textbook,26704,1,50,12711.0,synthetic
+Cycle,9854,2,21,7144.0,synthetic
+Electronics,23099,3,49,11075.0,synthetic
+Textbook,24831,3,6,23842.0,synthetic
+Cycle,4711,5,60,2705.0,synthetic
+Cycle,24855,4,22,19765.0,synthetic
+Notes,27814,5,10,29051.0,synthetic
+Textbook,26564,3,0,26430.0,synthetic
+Notes,26162,3,45,14221.0,synthetic
+Cycle,7876,4,12,7913.0,synthetic
+Cycle,15026,3,0,15287.0,synthetic
+Notes,25220,5,8,25346.0,synthetic
+Electronics,2794,3,26,1638.0,synthetic
+Hostel Essentials,7030,4,59,3141.0,synthetic
+Textbook,6345,5,35,4241.0,synthetic
+Hostel Essentials,12073,4,26,8797.0,synthetic
+Notes,3577,2,33,2170.0,synthetic
+Cycle,5454,5,33,4189.0,synthetic
+Textbook,29567,5,10,32204.0,synthetic
+Cycle,14601,3,3,12330.0,synthetic
+Hostel Essentials,24492,5,9,21324.0,synthetic
+Notes,2394,2,3,1957.0,synthetic
+Cycle,1648,3,44,977.0,synthetic
+Hostel Essentials,28712,4,36,18987.0,synthetic
+Electronics,28848,1,45,12464.0,synthetic
+Hostel Essentials,537,5,20,428.0,synthetic
+Hostel Essentials,7438,5,31,5609.0,synthetic
+Textbook,14973,5,18,13849.0,synthetic
+Notes,19320,1,38,11125.0,synthetic
+Hostel Essentials,25167,1,9,17533.0,synthetic
+Electronics,441,2,4,354.0,synthetic
+Notes,4105,3,46,2126.0,synthetic
+Electronics,810,3,12,690.0,synthetic
+Textbook,17974,1,57,8581.0,synthetic
+Cycle,16281,4,17,14270.0,synthetic
+Electronics,16003,3,22,11941.0,synthetic
+Textbook,6159,2,46,3671.0,synthetic
+Electronics,22763,3,22,17568.0,synthetic
+Hostel Essentials,27427,3,12,25016.0,synthetic
+Electronics,21003,2,17,13868.0,synthetic
+Electronics,29538,4,47,15412.0,synthetic
+Hostel Essentials,24777,5,10,25628.0,synthetic
+Textbook,2655,2,28,1734.0,synthetic
+Electronics,23830,4,19,16269.0,synthetic
+Electronics,18608,1,24,10788.0,synthetic
+Cycle,17548,2,50,9446.0,synthetic
+Electronics,6138,3,38,3424.0,synthetic
+Textbook,10596,4,5,11284.0,synthetic
+Cycle,10786,2,42,6081.0,synthetic
+Notes,3356,2,50,1517.0,synthetic
+Cycle,10112,5,39,7257.0,synthetic
+Notes,5040,2,3,4401.0,synthetic
+Cycle,13738,2,31,8329.0,synthetic
+Hostel Essentials,26156,4,32,16120.0,synthetic
+Hostel Essentials,22332,1,1,20299.0,synthetic
+Hostel Essentials,8105,4,46,4378.0,synthetic
+Textbook,17548,3,8,13894.0,synthetic
+Notes,26837,4,20,23054.0,synthetic
+Cycle,28492,5,19,24417.0,synthetic
+Hostel Essentials,9286,2,53,4688.0,synthetic
+Electronics,9332,2,57,3983.0,synthetic
+Hostel Essentials,1859,1,46,880.0,synthetic
+Hostel Essentials,23031,4,21,18646.0,synthetic
+Hostel Essentials,8806,3,39,5209.0,synthetic
+Electronics,10791,5,39,7052.0,synthetic
+Textbook,11632,4,21,10456.0,synthetic
+Electronics,3096,5,15,2514.0,synthetic
+Notes,3244,5,8,3369.0,synthetic
+Cycle,17525,5,27,14362.0,synthetic
+Cycle,12978,5,36,8365.0,synthetic
+Notes,9970,5,44,6986.0,synthetic
+Cycle,23969,5,12,24322.0,synthetic
+Notes,6595,2,39,4161.0,synthetic
+Notes,12502,2,53,5809.0,synthetic
+Notes,9572,3,46,4928.0,synthetic
+Electronics,14888,5,53,10116.0,synthetic
+Notes,4089,1,48,1815.0,synthetic
+Notes,29964,5,30,21748.0,synthetic
+Hostel Essentials,8903,2,60,3956.0,synthetic
+Electronics,6577,2,42,3285.0,synthetic
+Hostel Essentials,21024,2,28,13578.0,synthetic
+Textbook,16386,1,44,7773.0,synthetic
+Textbook,22380,2,57,9444.0,synthetic
+Notes,29635,1,20,19023.0,synthetic
+Notes,20952,5,0,24151.0,synthetic
+Notes,14947,4,9,13794.0,synthetic
+Notes,9777,4,44,6460.0,synthetic
+Cycle,17804,5,26,14211.0,synthetic
+Electronics,27348,1,1,21863.0,synthetic
+Electronics,16469,2,30,9189.0,synthetic
+Hostel Essentials,16642,5,55,8288.0,synthetic
+Textbook,3590,5,42,2280.0,synthetic
+Textbook,13261,2,57,5961.0,synthetic
+Electronics,21527,2,41,12867.0,synthetic
+Hostel Essentials,24663,1,3,17892.0,synthetic
+Electronics,27376,4,3,24095.0,synthetic
+Textbook,19542,4,48,12966.0,synthetic
+Hostel Essentials,27809,1,56,11154.0,synthetic
+Cycle,2014,4,32,1488.0,synthetic
+Electronics,17662,4,12,12655.0,synthetic
+Cycle,7854,2,51,3637.0,synthetic
+Electronics,10672,1,14,7466.0,synthetic
+Electronics,28384,2,47,12219.0,synthetic
+Notes,20314,3,5,18704.0,synthetic
+Electronics,13391,3,27,8828.0,synthetic
+Electronics,28347,2,30,16201.0,synthetic
+Textbook,12005,3,34,7869.0,synthetic
+Cycle,29348,4,56,16385.0,synthetic
+Textbook,8893,5,38,6426.0,synthetic
+Electronics,8596,5,40,5900.0,synthetic
+Notes,19351,4,50,11555.0,synthetic
+Cycle,28081,2,29,20175.0,synthetic
+Hostel Essentials,2500,2,43,1272.0,synthetic
+Textbook,21949,5,52,13616.0,synthetic
+Textbook,12507,2,1,10807.0,synthetic
+Notes,26175,3,57,13314.0,synthetic
+Cycle,23422,5,52,13258.0,synthetic
+Cycle,5149,2,34,3266.0,synthetic
+Electronics,20183,4,39,12025.0,synthetic
+Electronics,29291,2,48,13860.0,synthetic
+Hostel Essentials,4577,2,37,2619.0,synthetic
+Electronics,22643,1,59,8454.0,synthetic
+Electronics,3398,5,39,2102.0,synthetic
+Notes,5120,1,1,4105.0,synthetic
+Electronics,7920,5,17,6437.0,synthetic
+Notes,16273,5,35,12274.0,synthetic
+Hostel Essentials,23566,1,38,11954.0,synthetic
+Hostel Essentials,3479,1,41,1680.0,synthetic
+Hostel Essentials,1329,5,44,885.0,synthetic
+Notes,21779,4,33,15838.0,synthetic
+Notes,9809,3,6,8710.0,synthetic
+Electronics,17916,4,18,16626.0,synthetic
+Hostel Essentials,12815,4,33,8008.0,synthetic
+Hostel Essentials,17412,3,16,15053.0,synthetic
+Textbook,10020,4,29,7719.0,synthetic
+Cycle,25440,3,53,14077.0,synthetic
+Cycle,3605,1,16,2492.0,synthetic
+Cycle,23127,1,53,11365.0,synthetic
+Notes,12925,4,59,6117.0,synthetic
+Electronics,2887,1,8,2212.0,synthetic
+Electronics,27053,1,55,11357.0,synthetic
+Textbook,22900,4,45,15227.0,synthetic
+Notes,4748,1,23,2950.0,synthetic
+Textbook,16313,5,42,11605.0,synthetic
+Textbook,4811,2,7,3940.0,synthetic
+Electronics,5785,3,28,3663.0,synthetic
+Notes,9003,3,22,6555.0,synthetic
+Textbook,10513,2,24,7108.0,synthetic
+Cycle,29538,4,49,16483.0,synthetic
+Textbook,15349,5,19,12827.0,synthetic
+Notes,12655,2,35,7451.0,synthetic
+Notes,25787,1,43,14429.0,synthetic
+Electronics,1271,4,48,845.0,synthetic
+Cycle,26475,3,27,17597.0,synthetic
+Textbook,1245,3,47,675.0,synthetic
+Textbook,3197,5,41,2288.0,synthetic
+Notes,1131,2,10,939.0,synthetic
+Textbook,13348,3,42,7398.0,synthetic
+Textbook,29377,5,22,21962.0,synthetic
+Cycle,25330,2,59,11604.0,synthetic
+Notes,2281,5,49,1528.0,synthetic
+Hostel Essentials,18131,2,41,10743.0,synthetic
+Cycle,28142,4,42,17672.0,synthetic
+Hostel Essentials,25677,3,4,25258.0,synthetic
+Textbook,8557,4,49,5034.0,synthetic
+Notes,17978,5,13,15330.0,synthetic
+Textbook,10665,1,46,5365.0,synthetic
+Cycle,6807,4,35,5001.0,synthetic
+Electronics,26488,3,60,11824.0,synthetic
+Cycle,15160,2,1,13150.0,synthetic
+Electronics,14335,4,40,8635.0,synthetic
+Electronics,15527,2,27,9791.0,synthetic
+Textbook,6460,1,34,3826.0,synthetic
+Cycle,26839,4,18,22977.0,synthetic
+Cycle,17978,5,41,12528.0,synthetic
+Electronics,10769,4,10,9982.0,synthetic
+Notes,18017,2,8,14940.0,synthetic
+Electronics,7164,1,2,5523.0,synthetic
+Electronics,14688,2,5,12081.0,synthetic
+Hostel Essentials,22504,3,1,21705.0,synthetic
+Notes,24894,2,21,15492.0,synthetic
+Hostel Essentials,12674,4,10,12174.0,synthetic
+Cycle,21520,2,41,13534.0,synthetic
+Notes,14608,1,57,6258.0,synthetic
+Hostel Essentials,2466,4,59,1268.0,synthetic
+Electronics,29302,4,19,21490.0,synthetic
+Notes,26097,5,53,15919.0,synthetic
+Textbook,20288,1,57,8509.0,synthetic
+Cycle,1687,5,36,1231.0,synthetic
+Cycle,20205,1,5,16959.0,synthetic
+Textbook,7251,5,3,7574.0,synthetic
+Electronics,28027,3,36,15307.0,synthetic
+Textbook,2821,1,37,1558.0,synthetic
+Textbook,21532,4,32,15116.0,synthetic
+Textbook,11826,5,35,8691.0,synthetic
+Cycle,28650,4,38,17494.0,synthetic
+Electronics,23514,3,22,17708.0,synthetic
+Cycle,19054,4,51,10548.0,synthetic
+Hostel Essentials,15687,4,44,9538.0,synthetic
+Hostel Essentials,17684,1,23,9850.0,synthetic
+Textbook,18423,1,44,9199.0,synthetic
+Electronics,8634,3,40,5430.0,synthetic
+Electronics,16133,5,18,12655.0,synthetic
+Electronics,7039,3,12,5652.0,synthetic
+Textbook,8358,1,17,6959.0,synthetic
+Textbook,16015,1,47,8036.0,synthetic
+Hostel Essentials,19072,4,9,19012.0,synthetic
+Textbook,1912,4,32,1311.0,synthetic
+Cycle,29461,3,58,13848.0,synthetic
+Notes,5173,2,4,4440.0,synthetic
+Cycle,16626,2,33,9842.0,synthetic
+Electronics,21295,3,17,16166.0,synthetic
+Electronics,8186,1,50,3166.0,synthetic
+Hostel Essentials,20419,3,8,16130.0,synthetic
+Cycle,15286,1,36,9309.0,synthetic
+Textbook,996,4,45,627.0,synthetic
+Electronics,26103,4,7,24083.0,synthetic
+Textbook,5020,5,24,4843.0,synthetic
+Hostel Essentials,3749,2,8,2645.0,synthetic
+Hostel Essentials,18592,4,31,10393.0,synthetic
+Textbook,5830,5,0,7547.0,synthetic
+Cycle,12318,2,37,6556.0,synthetic
+Cycle,1191,5,18,1071.0,synthetic
+Cycle,17731,2,22,11095.0,synthetic
+Cycle,26288,2,48,11281.0,synthetic
+Hostel Essentials,3991,3,60,1808.0,synthetic
+Notes,17262,5,29,13828.0,synthetic
+Cycle,25896,2,45,12999.0,synthetic
+Notes,6536,5,23,4559.0,synthetic
+Electronics,7879,4,39,4884.0,synthetic
+Hostel Essentials,13862,3,23,11239.0,synthetic
+Hostel Essentials,11326,3,9,8426.0,synthetic
+Notes,2669,3,52,1454.0,synthetic
+Electronics,13564,3,22,9640.0,synthetic
+Electronics,27483,2,21,15962.0,synthetic
+Notes,17846,4,23,14949.0,synthetic
+Notes,9647,1,49,4594.0,synthetic
+Cycle,29419,2,42,16054.0,synthetic
+Notes,2778,3,10,2597.0,synthetic
+Electronics,6401,5,4,6322.0,synthetic
+Textbook,29613,5,37,23737.0,synthetic
+Hostel Essentials,4997,4,8,5444.0,synthetic
+Cycle,24441,1,9,19046.0,synthetic
+Electronics,4488,4,48,2522.0,synthetic
+Textbook,6821,4,44,4141.0,synthetic
+Textbook,23276,5,23,22486.0,synthetic
+Notes,19644,4,44,10946.0,synthetic
+Textbook,11566,4,18,9637.0,synthetic
+Notes,8156,2,28,5251.0,synthetic
+Electronics,27820,4,6,24803.0,synthetic
+Electronics,13972,3,50,6633.0,synthetic
+Hostel Essentials,2136,4,5,2139.0,synthetic

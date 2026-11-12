@@ -8,12 +8,19 @@
         </a>
       </li>
       <li class="menu-category">
-        <a href="contact.php?id=<?php echo (isset($_SESSION['customer_name'])) ? $_SESSION['id'] : 'unknown'; ?>" class="menu-title">
-          Contact us
-        </a>
+        <a href="browse.php" class="menu-title">Browse items</a>
       </li>
       <li class="menu-category">
-        <a href="about.php?id=<?php echo (isset($_SESSION['customer_name'])) ? $_SESSION['id'] : 'unknown'; ?>" class="menu-title">About us</a>
+        <a href="sell.php" class="menu-title">Sell an item</a>
+      </li>
+      <li class="menu-category">
+        <a href="stories.php" class="menu-title">Item stories</a>
+      </li>
+      <li class="menu-category">
+        <a href="image-search.php" class="menu-title">Photo search</a>
+      </li>
+      <li class="menu-category">
+        <a href="contact.php" class="menu-title">Contact us</a>
       </li>
       <!-- Profile Link Setup -->
       <?php if (isset($_SESSION['id'])) { ?>
@@ -28,6 +35,10 @@
             Profile (please log in)
           </a>
         </li>
+      <?php } ?>
+      <?php if (isset($_SESSION['id'])) { ?>
+        <li class="menu-category"><a href="my-listings.php" class="menu-title">My listings</a></li>
+        <li class="menu-category"><a href="my-orders.php" class="menu-title">My orders</a></li>
       <?php } ?>
       <!-- Visit Admin Panel After Login -->
       <?php if (isset($_SESSION['logged-in'])) { ?>

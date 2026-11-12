@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پنل مدیریت</title>
+    <title>HandMeDown Admin</title>
     <!-- <link rel="stylesheet" href="../css/style.php"> -->
     <!--Bootstrap css link-->
     <link
@@ -37,7 +37,7 @@
     >
       <div class="container-fluid">
         <a class="navbar-brand text-white" href="../index.php">
-          <h2>فروشگاه</h2>
+          <h2>HandMeDown</h2>
         </a>
         <button
           class="navbar-toggler"
@@ -46,7 +46,7 @@
           data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
           aria-expanded="false"
-          aria-label="تغییر ناوبری"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -58,32 +58,41 @@
                 aria-current="page"
                 href="post.php"
               >
-                <h6>پنل مدیریت</h6>
+                <h6>Dashboard</h6>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active text-white" href="post.php">
-                <h6>محصولات</h6>
+                <h6>Shop products</h6>
               </a>
             </li>
             <li class="nav- text-white">
               <a class="nav-link active text-white" href="catagory.php">
-                <h6>دسته‌بندی‌ها</h6>
+                <h6>Categories</h6>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active text-white" href="users.php">
-                <h6>کاربران</h6>
+                <h6>Users</h6>
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link active text-white" href="listings.php"><h6>Campus listings</h6></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-white" href="orders.php"><h6>Campus orders</h6></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-white" href="charts.php"><h6>Analytics</h6></a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link active text-white" href="settings.php">
-                <h6>تنظیمات</h6>
+                <h6>Settings</h6>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active text-white" href="logout.php?">
-                <h6>خروج</h6>
+                <h6>Log out</h6>
               </a>
             </li>
           </ul>

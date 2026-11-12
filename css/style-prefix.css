@@ -12,18 +12,19 @@
   --spanish-gray: hsl(0, 0%, 60%);
   --coolers-black: #69585F;
   --eerie-black: hsl(0, 0%, 13%);
-  /* --main-maroon: #FE6601; */
-  /* --main-maroon: #CE5959; */
+  --main-maroon: #1034A6;
   --sandy-brown: hsl(29, 90%, 65%);
-  /* --deep-maroon: #ED9E67; */
-  /* --deep-maroon: #89375F; */
-  --ocean-green: hsl(152, 51%, 52%);
+  --deep-maroon: #718DA5;
+  --ocean-green: #C9364B;
   --davys-gray: hsl(0, 0%, 33%);
   --pale-purple-pentone: #EDDFEF;
   --white: hsl(0, 100%, 100%);
   --black-shade: #050609;
   --unbleached-silk: #FFB485;
-  --header-main-backgroud: #F2F2F2;
+  --header-main-backgroud: #EEF2FB;
+  --hmd-egyptian-blue: #1034A6;
+  --hmd-stone-blue: #718DA5;
+  --hmd-scarlet-red: #C9364B;
 
 
   /**
@@ -495,9 +496,9 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
   border-bottom: 1px solid var(--pale-purple-pentone);
 }
 
-.header-logo { margin-bottom: 20px; }
+.header-logo { display: flex; align-items: center; justify-self: start; margin-bottom: 20px; }
 
-.header-logo img { margin: auto; }
+.header-logo img { display: block; width: 172px; height: 82px; margin: 0; object-fit: contain; }
 
 .header-search-container { position: relative; }
 
