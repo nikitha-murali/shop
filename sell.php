@@ -17,7 +17,7 @@ $error = $_GET['error'] ?? '';
   <h1>List an item for sale</h1>
   <p><a href="my-listings.php">My listings</a> · <a href="index.php">Shop home</a></p>
   <?php if ($error !== ''): ?><p class="error"><?= hmd_escape($error) ?></p><?php endif; ?>
-  <p class="note">Condition is rated from 1 (poor) to 5 (like new). Asking price must be within your price range. The price suggestion is indicative, not a guarantee.</p>
+  <p class="note">Choose the rating that best describes your item: 1 is Poor and 5 is Like new. Your asking price must be within your price range.</p>
   <form class="hmd-form panel" action="save-listing.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="csrf_token" value="<?= hmd_escape(hmd_csrf_token()) ?>">
     <label for="title">Item title</label><input id="title" name="title" maxlength="200" required>
@@ -25,7 +25,7 @@ $error = $_GET['error'] ?? '';
       <div><label for="category">Category</label><input id="category" name="category" maxlength="100" required></div>
       <div><label for="course">Course</label><input id="course" name="course" maxlength="100" required></div>
       <div><label for="semester">Semester</label><input id="semester" name="semester" maxlength="50" required></div>
-      <div><label for="condition_score">Condition (1–5)</label><input id="condition_score" name="condition_score" type="number" min="1" max="5" step="0.1" required></div>
+      <div><label for="condition_score">How would you rate its condition?</label><select id="condition_score" name="condition_score" required><option value="">Choose a rating</option><option value="1">1 star · Poor</option><option value="2">2 stars · Fair</option><option value="3">3 stars · Good</option><option value="4">4 stars · Very good</option><option value="5">5 stars · Like new</option></select></div>
       <div><label for="age_months">Age in months</label><input id="age_months" name="age_months" type="number" min="0" required></div>
       <div><label for="original_price">Original price (₹)</label><input id="original_price" name="original_price" type="number" min="0.01" step="0.01" required></div>
       <div><label for="price_min">Minimum price (₹)</label><input id="price_min" name="price_min" type="number" min="0.01" step="0.01" required></div>

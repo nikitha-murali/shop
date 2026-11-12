@@ -27,7 +27,7 @@ $error = $_GET['error'] ?? '';
   <div><h1><?= hmd_escape($listing['title']) ?></h1>
     <p><?= hmd_escape($listing['category']) ?> · <?= hmd_escape($listing['course']) ?> · <?= hmd_escape($listing['semester']) ?></p>
     <p><?= nl2br(hmd_escape($listing['description'])) ?></p><p>Pickup: <?= hmd_escape($listing['pickup_location']) ?></p>
-    <p>Condition: <?= hmd_escape($listing['condition_score']) ?>/5 · Age: <?= (int) $listing['age_months'] ?> months</p>
+    <p>Condition: <?php hmd_render_condition_rating($listing['condition_score']); ?> · Age: <?= (int) $listing['age_months'] ?> months</p>
     <p>Original price: ₹<?= hmd_escape(number_format((float) $listing['original_price'], 2)) ?></p>
     <p class="box">Asking ₹<?= hmd_escape(number_format((float) $listing['asking_price'], 2)) ?> · Indicative price estimate: <?= $listing['predicted_price'] === null ? 'not available' : '₹' . hmd_escape(number_format((float) $listing['predicted_price'], 2)) ?> · <?= hmd_escape($listing['deal_badge'] ?? '') ?><br><small>Estimate only, not a guaranteed sale price.</small></p>
     <?php if ($listing['story']): ?><blockquote><?= nl2br(hmd_escape($listing['story'])) ?></blockquote><?php endif; ?>

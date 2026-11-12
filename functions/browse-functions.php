@@ -1,6 +1,36 @@
 <?php
 require_once __DIR__ . '/sell-functions.php';
 
+function hmd_condition_label($score) {
+    $score = (float) $score;
+    if ($score < 1.5) {
+        return 'Poor';
+    }
+    if ($score < 2.5) {
+        return 'Fair';
+    }
+    if ($score < 3.5) {
+        return 'Good';
+    }
+    if ($score < 4.5) {
+        return 'Very good';
+    }
+    return 'Like new';
+}
+
+function hmd_render_condition_rating($score) {
+    $score = max(1, min(5, (float) $score));
+    $filledStars = (int) round($score);
+    $rating = number_format($score, 1);
+    $label = hmd_condition_label($score);
+    echo '<span class="condition-rating" aria-label="Condition rated '
+        . hmd_escape($rating) . ' out of 5: ' . hmd_escape($label) . '">'
+        . '<span class="condition-stars" aria-hidden="true">'
+        . str_repeat('★', $filledStars) . str_repeat('☆', 5 - $filledStars)
+        . '</span><span class="condition-label">' . hmd_escape($label)
+        . ' · ' . hmd_escape($rating) . '/5</span></span>';
+}
+
 function hmd_fetch_listings(mysqli $conn, array $filters = []) {
     $where = ["l.status = 'active'"];
     $values = [];

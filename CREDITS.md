@@ -33,7 +33,7 @@
 - **Chart.js:** marketplace charts reference Chart.js from jsDelivr.
 - **Python packages:** pandas, NumPy, and scikit-learn are used by the synthetic price-model trainer; Flask, mysql-connector-python, and Pillow support the optional image-search service.
 - **Logo:** the team supplied the HandMeDown logo and identified Canva as its creation tool. The team should retain its Canva project/export to document authorship.
-- **Synthetic listings/orders:** `hmd-sample-data.sql` contains fictional local sample accounts, listings, and pending orders. They are for preview/testing only, are not real users or sales, and must not be imported into production.
+- **Synthetic listings/orders:** `hmd-sample-data.sql` contains fictional local sample accounts and orders. Its distinct product photos come from the existing shop catalog and are illustrative, not photos of real student-owned second-hand items. The data is for preview/testing only, is not real users or sales, and must not be imported into production.
 - **Synthetic training data:** `ml/train_price_model_synthetic.py` deterministically generates `ml/sample_dataset.csv` and trains `ml/model.json` with scikit-learn LinearRegression. This is an illustrative demonstration model, not trained or validated on genuine marketplace sales and not evidence of production price accuracy. Do not describe the synthetic rows as real sales.
 - **Paid-sales model:** `ml/train_price_model.py` is a separate trainer intended for verified paid cash-on-pickup transactions only; it requires at least 30 qualifying sales.
 - **Photo search:** compares coarse color histograms and finds visual look-alikes; it does not identify exact products.

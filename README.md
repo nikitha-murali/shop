@@ -65,7 +65,7 @@ The HandMeDown brand palette uses Egyptian blue (`#1034A6`), stone blue (`#718DA
 
 1. Start Apache and MySQL in XAMPP, create/select the `web` database, and import `web.sql` only if the existing shop tables are not already present.
 2. Back up the database, then run `hmd-schema.sql` against `web` to add student fields and marketplace tables.
-3. Optional, local-only preview data: run `hmd-sample-data.sql` after the schema. It adds 20 clearly fictional listings and five pending sample orders using `@handmedown.invalid` accounts. Never import this sample data into production.
+3. Optional, local-only preview data: run `hmd-sample-data.sql` after the schema. It adds 20 clearly fictional listings with varied product photos from the existing shop catalog, plus five pending sample orders using `@handmedown.invalid` accounts. Never import this sample data into production; the photos are catalog examples, not photos of real student-owned second-hand items.
 4. Check `includes/config.php` for the local MySQL credentials.
 5. Signup allows `presidencyuniversity.in` by default. Override the allowed domain list with the `HMD_COLLEGE_EMAIL_DOMAINS` environment variable; multiple domains can be comma-separated. Signup checks the email domain but does not verify mailbox ownership.
 6. To generate the illustrative sample price model, install `pandas`, `numpy`, and `scikit-learn`, then run `python ml/train_price_model_synthetic.py`. It creates `ml/model.json` and `ml/sample_dataset.csv` from deterministic synthetic data. Price badges are demonstrations only; the estimates are not based on verified transactions.
