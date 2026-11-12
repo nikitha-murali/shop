@@ -1,0 +1,162 @@
+/* فایل stylefooter.css */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+/* استایل پایه */
+footer {
+  background: #050609;
+  border-top: 2px solid rgba(80, 255, 80, 0.1);
+  padding: 50px 0 0;
+  font-family: 'Vazirmatn', sans-serif;
+  margin-top: 70px !important;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-category {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+/* استایل هدرها */
+.footer-nav-item h2 {
+  color: #00ff88;
+  font-size: 2.2em;
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+  margin: 0 0 25px;
+  position: relative;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.footer-nav-item h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  position: absolute;
+  bottom: -15px;
+  right: 0; /* تغییر از left به right */
+  animation: lineFlow 3s infinite;
+}
+
+/* استایل محتوا */
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav-item.flex {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.icon-box {
+  color: #00ff88;
+  font-size: 1.8em;
+  min-width: 40px;
+  text-align: center;
+}
+
+.address, .footer-nav-link {
+  color: #a0a0a0 !important;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  line-height: 1.6;
+}
+
+.footer-nav-link:hover {
+  color: #00ff88 !important;
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+  transform: translateX(8px);
+}
+
+/* شبکه‌های اجتماعی */
+.social-link {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.social-link .footer-nav-link {
+  font-size: 2.2em;
+  color: #666 !important;
+  transition: all 0.3s ease;
+}
+
+.social-link .footer-nav-link:hover {
+  color: #00ff88 !important;
+  transform: translateY(-5px) scale(1.1);
+}
+
+/* بخش پایینی */
+.footer-bottom {
+  background: rgba(0, 0, 0, 0.25);
+  margin-top: 60px;
+  padding: 25px 0;
+  border-top: 1px solid rgba(80, 255, 80, 0.1);
+}
+
+.payment-img {
+  max-width: 220px;
+  margin: 0 auto 20px;
+  display: block;
+  opacity: 0.9;
+}
+
+.copyright {
+  color: #666;
+  text-align: center;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.copyright a {
+  color: #00ff88 !important;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.copyright a:hover {
+  opacity: 0.8;
+}
+
+/* انیمیشن‌ها */
+@keyframes glow {
+  from { text-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
+  to { text-shadow: 0 0 30px rgba(0, 255, 136, 0.6); }
+}
+
+@keyframes lineFlow {
+  0% { width: 50px; opacity: 0.5; }
+  50% { width: 150px; opacity: 1; }
+  100% { width: 50px; opacity: 0.5; }
+}
+
+/* رسپانسیو */
+@media (max-width: 768px) {
+  .footer-category {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .footer-nav-item h2 {
+    font-size: 1.8em;
+  }
+
+  .social-link {
+    justify-content: center;
+  }
+
+  .payment-img {
+    max-width: 150px;
+  }
+}
+
+
